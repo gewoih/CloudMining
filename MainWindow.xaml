@@ -14,36 +14,38 @@
 		</Grid.ColumnDefinitions>
 
 		<ListView Background="#6E8FD1" Foreground="White" FontSize="18" HorizontalContentAlignment="Stretch">
-			<ListViewItem>
+			<ListViewItem x:Name="membersMenu" Selected="membersMenu_Selected">
 				<StackPanel Orientation="Horizontal">
 					<Image Source="Icons/member.png" Width="50"/>
 					<TextBlock Text="Участники" VerticalAlignment="Center"/>
 				</StackPanel>
 			</ListViewItem>
-			<ListViewItem>
+			<ListViewItem x:Name="devicesMenu">
 				<StackPanel Orientation="Horizontal">
 					<Image Source="Icons/device.png" Width="50"/>
 					<TextBlock Text="Оборудование" VerticalAlignment="Center"/>
 				</StackPanel>
 			</ListViewItem>
-			<ListViewItem>
+			<ListViewItem x:Name="statisticsMenu">
 				<StackPanel Orientation="Horizontal">
 					<Image Source="Icons/statistics.png" Width="50"/>
 					<TextBlock Text="Статистика" VerticalAlignment="Center"/>
 				</StackPanel>
 			</ListViewItem>
-			<ListViewItem>
+			<ListViewItem x:Name="payoutsMenu">
 				<StackPanel Orientation="Horizontal">
 					<Image Source="Icons/payouts.png" Width="50"/>
 					<TextBlock Text="Выплаты" VerticalAlignment="Center"/>
 				</StackPanel>
 			</ListViewItem>
-			<ListViewItem>
+			<ListViewItem x:Name="electricityMenu">
 				<StackPanel Orientation="Horizontal">
 					<Image Source="Icons/electricity.png" Width="50"/>
 					<TextBlock Text="Электричество" VerticalAlignment="Center"/>
 				</StackPanel>
 			</ListViewItem>
 		</ListView>
+
+		<StackPanel x:Name="MainField" Grid.Row="0" Grid.Column="1"/>
 	</Grid>
 </Window>

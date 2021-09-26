@@ -7,18 +7,18 @@ namespace CloudMining
 	public class Member
 	{
 		public int id { get; set; }
-		public int type { get; set; }
+		public string role { get; set; }
 		public string name { get; set; }
 		public DateTime joinDate { get; set; }
 		public double fee { get; set; }
 
-		public Member(int _id, int _type, string _name, DateTime _joinDate, double _fee)
+		public Member(int id, string role, string name, DateTime joinDate, double fee)
 		{
-			this.id = _id;
-			this.type = _type;
-			this.name = _name;
-			this.joinDate = _joinDate;
-			this.fee = _fee;
+			this.id = id;
+			this.role = role;
+			this.name = name;
+			this.joinDate = joinDate;
+			this.fee = fee;
 		}
 	}
 }

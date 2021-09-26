@@ -17,9 +17,19 @@ namespace CloudMining
 {
 	public partial class MainWindow : Window
 	{
+		MembersList membersList;
+
 		public MainWindow()
 		{
 			InitializeComponent();
+
+			membersList = new MembersList();
+		}
+
+		private void membersMenu_Selected(object sender, RoutedEventArgs e)
+		{
+			this.membersList.LoadList();
+			this.membersList.DrawList(MainField);
 		}
 	}
 }
