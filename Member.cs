@@ -1,24 +1,65 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
-namespace CloudMining
+namespace CloudMining.ViewModels
 {
-	public class Member
+	public class Member : MainViewModel
 	{
-		public int id { get; set; }
-		public string role { get; set; }
-		public string name { get; set; }
-		public DateTime joinDate { get; set; }
-		public double fee { get; set; }
+		private int id;
+		private string role;
+		private string name;
+		private DateTime joinDate;
+		private double fee;
 
-		public Member(int id, string role, string name, DateTime joinDate, double fee)
+		public int Id
 		{
-			this.id = id;
-			this.role = role;
-			this.name = name;
-			this.joinDate = joinDate;
-			this.fee = fee;
+			get { return id; }
+			set
+			{
+				id = value;
+				OnPropertyChanged("Id");
+			}
+		}
+
+		public string Role
+		{
+			get { return role; }
+			set
+			{
+				role = value;
+				OnPropertyChanged("Role");
+			}
+		}
+
+		public string Name
+		{
+			get { return name; }
+			set
+			{
+				name = value;
+				OnPropertyChanged("Name");
+			}
+		}
+
+		public DateTime JoinDate
+		{
+			get { return joinDate; }
+			set
+			{
+				joinDate = value;
+				OnPropertyChanged("JoinDate");
+			}
+		}
+
+		public double Fee
+		{
+			get { return fee; }
+			set
+			{
+				Fee = value;
+				OnPropertyChanged("Fee");
+			}
 		}
 	}
 }

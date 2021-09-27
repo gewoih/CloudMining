@@ -13,7 +13,7 @@ namespace CloudMining
 
 		public SQL()
 		{
-			this.connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\nrane\Desktop\CloudMining\CloudMiningDB.mdf;Integrated Security=True;Connect Timeout=30";
+			this.connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ranenko\Desktop\Проекты\CloudMining\Database\CloudMiningDB.mdf;Integrated Security=True;Connect Timeout=30";
 			this.connection = new SqlConnection(this.connectionString);
 			this.connection.Open();
 		}
