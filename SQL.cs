@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO;
 using System.Windows;
 
 namespace CloudMining
@@ -12,14 +13,9 @@ namespace CloudMining
 
 		public SQL()
 		{
-			this.connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ranenko\Desktop\Проекты\CloudMining\CloudMiningDB.mdf;Integrated Security=True;Connect Timeout=30";
+			this.connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\nrane\Desktop\CloudMining\CloudMiningDB.mdf;Integrated Security=True;Connect Timeout=30";
 			this.connection = new SqlConnection(this.connectionString);
 			this.connection.Open();
-		}
-
-		~SQL()
-		{
-			this.connection.Close();
 		}
 
 		public SqlDataReader Execute(string _command, bool _isStoredProcedure = false, List<SqlParameter> _parameters = null)
