@@ -8,7 +8,7 @@ using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 
-namespace CloudMining
+namespace CloudMining.ViewModels
 {
 	public class MembersList : IList<Member>
 	{

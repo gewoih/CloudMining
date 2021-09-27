@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace CloudMining
+namespace CloudMining.ViewModels
 {
 	public class Purchase : AOperation
 	{

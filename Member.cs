@@ -4,7 +4,7 @@ using System.Runtime.CompilerServices;
 
 namespace CloudMining.ViewModels
 {
-	public class Member : MainViewModel
+	public class Member : BaseViewModel
 	{
 		private int id;
 		private string role;
