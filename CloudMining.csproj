@@ -8,6 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Database\CloudMiningDB.mdf" />
+    <None Remove="Database\CloudMiningDB_log.ldf" />
     <None Remove="device.png" />
     <None Remove="Icons\device.png" />
     <None Remove="Icons\electricity.png" />
@@ -15,6 +17,16 @@
     <None Remove="Icons\payouts.png" />
     <None Remove="Icons\statistics.png" />
     <None Remove="member.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Database\CloudMiningDB.mdf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Database\CloudMiningDB_log.ldf">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <DependentUpon>CloudMiningDB.mdf</DependentUpon>
+    </Content>
   </ItemGroup>
 
   <ItemGroup>

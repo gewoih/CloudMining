@@ -3,7 +3,7 @@ using System.Data.SqlClient;
 
 namespace CloudMining
 {
-	class SQL
+	internal class SQL
 	{
 		private string connectionString;
 		private SqlConnection connection;
@@ -11,7 +11,7 @@ namespace CloudMining
 
 		public SQL()
 		{
-			this.connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ranenko\Desktop\Проекты\CloudMining\Database\CloudMiningDB.mdf;Integrated Security=True;Connect Timeout=30";
+			this.connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\nrane\Desktop\Проекты\CloudMining\Database\CloudMiningDB.mdf;Integrated Security=True;Connect Timeout=30";
 			this.connection = new SqlConnection(this.connectionString);
 			this.connection.Open();
 		}

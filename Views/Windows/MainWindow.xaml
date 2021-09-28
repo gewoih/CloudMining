@@ -3,48 +3,33 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:vm="clr-namespace:CloudMining.ViewModels"	
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1024" Background="#2B467A"
-		>
+        Title="MainWindow" Height="600" Width="1024" Background="#2B467A">
+
+	<Window.DataContext>
+		<vm:MembersViewModel/>
+	</Window.DataContext>
+	
 	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="*"/>
 			<ColumnDefinition Width="4*"/>
 		</Grid.ColumnDefinitions>
 
-		<ListView Background="#6E8FD1" Foreground="White" FontSize="18" HorizontalContentAlignment="Stretch">
-			<ListViewItem x:Name="membersMenu" Selected="membersMenu_Selected">
+		<ListView Background="#6E8FD1" Foreground="White" FontSize="24">
+			<ListViewItem x:Name="membersMenu">
 				<StackPanel Orientation="Horizontal">
-					<Image Source="Icons/member.png" Width="50"/>
-					<TextBlock Text="Участники" VerticalAlignment="Center"/>
+					<TextBlock Text="Участники"/>
 				</StackPanel>
 			</ListViewItem>
-			<ListViewItem x:Name="devicesMenu">
-				<StackPanel Orientation="Horizontal">
-					<Image Source="Icons/device.png" Width="50"/>
-					<TextBlock Text="Оборудование" VerticalAlignment="Center"/>
-				</StackPanel>
-			</ListViewItem>
-			<ListViewItem x:Name="statisticsMenu">
-				<StackPanel Orientation="Horizontal">
-					<Image Source="Icons/statistics.png" Width="50"/>
-					<TextBlock Text="Статистика" VerticalAlignment="Center"/>
-				</StackPanel>
-			</ListViewItem>
-			<ListViewItem x:Name="payoutsMenu">
-				<StackPanel Orientation="Horizontal">
-					<Image Source="Icons/payouts.png" Width="50"/>
-					<TextBlock Text="Выплаты" VerticalAlignment="Center"/>
-				</StackPanel>
-			</ListViewItem>
-			<ListViewItem x:Name="electricityMenu">
-				<StackPanel Orientation="Horizontal">
-					<Image Source="Icons/electricity.png" Width="50"/>
-					<TextBlock Text="Электричество" VerticalAlignment="Center"/>
-				</StackPanel>
-			</ListViewItem>
+			<MenuItem Header="x" Command="{Binding LoadMembersCommand}">
+				
+			</MenuItem>
 		</ListView>
 
-		<StackPanel x:Name="MainPanel" Grid.Row="0" Grid.Column="1"/>
+		<StackPanel x:Name="MainPanel" Grid.Row="0" Grid.Column="1">
+			<DataGrid ItemsSource="{Binding MembersList}" AutoGenerateColumns="True"/>
+		</StackPanel>
 	</Grid>
 </Window>
