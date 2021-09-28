@@ -1,63 +1,65 @@
-﻿using System;
+﻿using CloudMining.Models;
+using System;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace CloudMining.ViewModels
 {
-	public class Member : BaseViewModel
+	internal class MemberViewModel : BaseViewModel
 	{
-		private int id;
-		private string role;
-		private string name;
-		private DateTime joinDate;
-		private double fee;
+		private Member member;
+
+		public MemberViewModel(Member member)
+		{
+			this.member = member;
+		}
 
 		public int Id
 		{
-			get { return id; }
+			get => this.member.id;
 			set
 			{
-				id = value;
+				this.member.id = value;
 				OnPropertyChanged("Id");
 			}
 		}
 
 		public string Role
 		{
-			get { return role; }
+			get => this.member.role;
 			set
 			{
-				role = value;
+				this.member.role = value;
 				OnPropertyChanged("Role");
 			}
 		}
 
 		public string Name
 		{
-			get { return name; }
+			get => this.member.name;
 			set
 			{
-				name = value;
+				this.member.name = value;
 				OnPropertyChanged("Name");
 			}
 		}
 
 		public DateTime JoinDate
 		{
-			get { return joinDate; }
+			get => this.member.joinDate;
 			set
 			{
-				joinDate = value;
+				this.member.joinDate = value;
 				OnPropertyChanged("JoinDate");
 			}
 		}
 
 		public double Fee
 		{
-			get { return fee; }
+			get => this.member.fee;
 			set
 			{
-				Fee = value;
+				this.member.fee = value;
 				OnPropertyChanged("Fee");
 			}
 		}
