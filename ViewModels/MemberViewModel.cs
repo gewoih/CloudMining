@@ -7,7 +7,7 @@ namespace CloudMining.ViewModels
 {
 	internal class MemberViewModel : BaseViewModel
 	{
-		private Member member;
+		public Member member;
 
 		public MemberViewModel(Member member)
 		{
@@ -17,11 +17,7 @@ namespace CloudMining.ViewModels
 		public int Id
 		{
 			get => this.member.id;
-			set
-			{
-				this.member.id = value;
-				OnPropertyChanged("Id");
-			}
+			set => Set(ref this.member.id, value);
 		}
 
 		public string Role
