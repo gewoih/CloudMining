@@ -16,27 +16,28 @@ namespace CloudMining.ViewModels
 		}
 		#endregion
 
+		#region Commands
+
 		#region LoadMembersCommand
 		public ICommand LoadMembersCommand { get; }
 		private bool CanLoadMembersCommandExecute(object p) => true;
 		private void OnLoadMembersCommandExecuted(object p)
 		{
 			SQL connection = new SQL();
-			SqlDataReader reader = connection.Execute("select members.id, members_types_dict.name as role, members.name, join_date, fee from members join members_types_dict ON members.type = members_types_dict.id");
 
+			SqlDataReader reader = connection.Execute("select members.id, members_types_dict.name as role, members.name, join_date, fee from members join members_types_dict ON members.type = members_types_dict.id");
 			while (reader.Read())
 			{
-				Member m = new Member
-				{
-					id = Convert.ToInt32(reader["id"]),
-					role = reader["role"].ToString(),
-					name = reader["name"].ToString(),
-					joinDate = Convert.ToDateTime(reader["join_date"]),
-					fee = Convert.ToDouble(reader["id"])
-				};
-				MembersList.Add(m);
+				MembersList.Add(new Member(Convert.ToInt32(reader["id"]),
+											reader["role"].ToString(),
+											reader["name"].ToString(),
+											Convert.ToDateTime(reader["join_date"]),
+											Convert.ToDouble(reader["fee"])));
 			}
 		}
+		#endregion
+
+
 		#endregion
 
 		#region Properties
