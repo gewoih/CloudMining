@@ -3,33 +3,59 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-		xmlns:vm="clr-namespace:CloudMining.ViewModels"	
+		xmlns:vm="clr-namespace:CloudMining.ViewModels"
         mc:Ignorable="d"
-        Title="MainWindow" Height="600" Width="1024" Background="#2B467A">
+        Height="600" Width="920"
+		WindowStyle="None"
+		Background="Transparent"
+		AllowsTransparency="True"
+		ResizeMode="NoResize"
+		WindowStartupLocation="CenterScreen">
 
 	<Window.DataContext>
-		<vm:MembersViewModel/>
+		<vm:MainWindowViewModel/>
 	</Window.DataContext>
 	
-	<Grid>
-		<Grid.ColumnDefinitions>
-			<ColumnDefinition Width="*"/>
-			<ColumnDefinition Width="4*"/>
-		</Grid.ColumnDefinitions>
+	<Border Background="#2F4166" CornerRadius="20">
+		<Grid>
+			<Grid.ColumnDefinitions>
+				<ColumnDefinition Width="*"/>
+				<ColumnDefinition Width="3*"/>
+			</Grid.ColumnDefinitions>
+			<Grid.RowDefinitions>
+				<RowDefinition Height="*"/>
+				<RowDefinition Height="10*"/>
+			</Grid.RowDefinitions>
 
-		<ListView Background="#6E8FD1" Foreground="White" FontSize="24">
-			<ListViewItem x:Name="membersMenu">
-				<StackPanel Orientation="Horizontal">
-					<TextBlock Text="Участники"/>
-				</StackPanel>
-			</ListViewItem>
-			<MenuItem Header="x" Command="{Binding LoadMembersCommand}">
+			<TextBlock Text="CloudMining" Foreground="#6D97EA" FontSize="28" FontWeight="UltraBold" Margin="15, 0" VerticalAlignment="Center"/>
+			<Rectangle Grid.Column="1" HorizontalAlignment="Right" Fill="#031E53" Width="40" Height="40" RadiusX="10" RadiusY="10" Margin="0, 0, 20, 0"/>
+
+			<ListView Grid.Row="1" Foreground="White" FontSize="24" Background="Transparent" BorderThickness="0" HorizontalContentAlignment="Stretch">
+				<ListView.DataContext>
+					<vm:MembersViewModel/>
+				</ListView.DataContext>
+
+				<Button x:Name="membersMenu" Margin="0 5" Background="Transparent" BorderThickness="0" Foreground="#ACC1EA" Command="{Binding LoadMembersCommand}">
+					<StackPanel Orientation="Horizontal">
+						<Image Source="\Resources/member.png" Width="50"/>
+						<TextBlock Text="Участники" VerticalAlignment="Center"/>
+					</StackPanel>
+				</Button>
+				<RadioButton x:Name="devicesMenu"  Margin="0 5" Background="Transparent" BorderThickness="0" Foreground="#ACC1EA">
+					<StackPanel Orientation="Horizontal">
+						<Image Source="\Resources/device.png" Width="50"/>
+						<TextBlock Text="Устройства" VerticalAlignment="Center"/>
+					</StackPanel>
+				</RadioButton>
+			</ListView>
+
+			<StackPanel Grid.Row="1" Grid.Column="1" x:Name="MainPanel">
+				<StackPanel.DataContext>
+					<vm:MembersViewModel/>
+				</StackPanel.DataContext>
 				
-			</MenuItem>
-		</ListView>
-
-		<StackPanel x:Name="MainPanel" Grid.Row="0" Grid.Column="1">
-			<DataGrid ItemsSource="{Binding MembersList}" AutoGenerateColumns="True"/>
-		</StackPanel>
-	</Grid>
+				<DataGrid ItemsSource="{Binding MembersList}" AutoGenerateColumns="True"/>
+			</StackPanel>
+		</Grid>
+	</Border>
 </Window>

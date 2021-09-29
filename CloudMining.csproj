@@ -11,11 +11,6 @@
     <None Remove="Database\CloudMiningDB.mdf" />
     <None Remove="Database\CloudMiningDB_log.ldf" />
     <None Remove="device.png" />
-    <None Remove="Icons\device.png" />
-    <None Remove="Icons\electricity.png" />
-    <None Remove="Icons\member.png" />
-    <None Remove="Icons\payouts.png" />
-    <None Remove="Icons\statistics.png" />
     <None Remove="member.png" />
   </ItemGroup>
 
@@ -34,19 +29,19 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="Icons\device.png">
+    <Resource Include="Resources\device.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Icons\electricity.png">
+    <Resource Include="Resources\electricity.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Icons\member.png">
+    <Resource Include="Resources\member.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Icons\payouts.png">
+    <Resource Include="Resources\payouts.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Icons\statistics.png">
+    <Resource Include="Resources\statistics.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
