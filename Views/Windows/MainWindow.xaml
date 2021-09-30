@@ -12,6 +12,10 @@
 		ResizeMode="NoResize"
 		WindowStartupLocation="CenterScreen">
 
+	<Window.DataContext>
+		<vm:MainWindowViewModel/>
+	</Window.DataContext>
+	
 	<Border Background="#2F4166" CornerRadius="20">
 		<Grid>
 			<Grid.ColumnDefinitions>
@@ -23,26 +27,44 @@
 				<RowDefinition Height="10*"/>
 			</Grid.RowDefinitions>
 
-			<TextBlock Text="CloudMining" Foreground="#6D97EA" FontSize="28" FontWeight="UltraBold" Margin="15, 0" VerticalAlignment="Center"/>
-			<Rectangle Grid.Column="1" HorizontalAlignment="Right" Fill="#031E53" Width="40" Height="40" RadiusX="10" RadiusY="10" Margin="0, 0, 20, 0"/>
+			<DockPanel Grid.ColumnSpan="2">
+				<TextBlock Text="CloudMining" Foreground="#6D97EA" FontSize="28" FontWeight="UltraBold" Margin="15, 0" VerticalAlignment="Center"/>
+				<Rectangle HorizontalAlignment="Right" Fill="#031E53" Width="40" Height="40" RadiusX="10" RadiusY="10" Margin="0, 0, 20, 0">
+					<Rectangle.InputBindings>
+						<MouseBinding Command="{Binding CloseWindowCommand}" MouseAction="LeftClick"/>
+					</Rectangle.InputBindings>
+				</Rectangle>
+			</DockPanel>
 
-			<ListView Grid.Row="1" Foreground="White" FontSize="24" Background="Transparent" BorderThickness="0" HorizontalContentAlignment="Stretch">
-				<Button x:Name="membersMenu" Margin="0 5" Background="Transparent" BorderThickness="0" Foreground="#ACC1EA" Command="{Binding LoadMembersCommand}" Cursor="Hand">
+			<ListView Grid.Row="1" Foreground="White" FontSize="24">
+				<ListViewItem Margin="0 5" Foreground="#ACC1EA">
+					<ListViewItem.DataContext>
+						<vm:MembersViewModel/>
+					</ListViewItem.DataContext>
+					
+					<ListViewItem.InputBindings>
+						<MouseBinding MouseAction="LeftClick" Command="{Binding LoadMembersCommand}"/>
+					</ListViewItem.InputBindings>
+
 					<StackPanel Orientation="Horizontal">
 						<Image Source="\Resources/member.png" Width="50"/>
 						<TextBlock Text="Участники" VerticalAlignment="Center"/>
 					</StackPanel>
-				</Button>
-				<RadioButton x:Name="devicesMenu" Margin="0 5" Background="Transparent" BorderThickness="0" Foreground="#ACC1EA" Command="{Binding LoadMembersCommand}">
+				</ListViewItem>
+				<ListViewItem Margin="0 5" Foreground="#ACC1EA">
 					<StackPanel Orientation="Horizontal">
 						<Image Source="\Resources/device.png" Width="50"/>
 						<TextBlock Text="Устройства" VerticalAlignment="Center"/>
 					</StackPanel>
-				</RadioButton>
+				</ListViewItem>
 			</ListView>
 
-			<StackPanel Grid.Row="1" Grid.Column="1" x:Name="MainPanel" DataContext="{Binding }">
-				<DataGrid ItemsSource="{Binding Path=MembersList}" AutoGenerateColumns="True"/>
+			<StackPanel Grid.Row="1" Grid.Column="1" x:Name="MainPanel">
+				<DataGrid ItemsSource="{Binding MembersList}">
+					<DataGrid.DataContext>
+						<vm:MembersViewModel/>
+					</DataGrid.DataContext>
+				</DataGrid>
 			</StackPanel>
 		</Grid>
 	</Border>

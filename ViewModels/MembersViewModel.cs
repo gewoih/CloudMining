@@ -28,15 +28,11 @@ namespace CloudMining.ViewModels
 			SqlDataReader reader = connection.Execute("select members.id, members_types_dict.name as role, members.name, join_date, fee from members join members_types_dict ON members.type = members_types_dict.id");
 			while (reader.Read())
 			{
-				Member m = new Member
-				{
-					id = Convert.ToInt32(reader["id"]),
-					role = reader["role"].ToString(),
-					name = reader["name"].ToString(),
-					joinDate = Convert.ToDateTime(reader["join_date"]),
-					fee = Convert.ToDouble(reader["fee"])
-				};
-				MembersList.Add(m);
+				this.MembersList.Add(new Member(Convert.ToInt32(reader["id"]),
+												reader["role"].ToString(),
+												reader["name"].ToString(),
+												Convert.ToDateTime(reader["join_date"]),
+												Convert.ToDouble(reader["fee"])));
 			}
 		}
 		#endregion
