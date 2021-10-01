@@ -17,7 +17,7 @@
 	</Window.DataContext>
 	
 	<Border Background="#2F4166" CornerRadius="20">
-		<Grid>
+		<Grid ShowGridLines="True">
 			<Grid.ColumnDefinitions>
 				<ColumnDefinition Width="*"/>
 				<ColumnDefinition Width="3*"/>
@@ -37,13 +37,9 @@
 			</DockPanel>
 
 			<ListView Grid.Row="1" Foreground="White" FontSize="24">
-				<ListViewItem Margin="0 5" Foreground="#ACC1EA">
-					<ListViewItem.DataContext>
-						<vm:MembersViewModel/>
-					</ListViewItem.DataContext>
-					
+				<ListViewItem Foreground="#ACC1EA">
 					<ListViewItem.InputBindings>
-						<MouseBinding MouseAction="LeftClick" Command="{Binding LoadMembersCommand}"/>
+						<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="1"/>
 					</ListViewItem.InputBindings>
 
 					<StackPanel Orientation="Horizontal">
@@ -51,7 +47,11 @@
 						<TextBlock Text="Участники" VerticalAlignment="Center"/>
 					</StackPanel>
 				</ListViewItem>
-				<ListViewItem Margin="0 5" Foreground="#ACC1EA">
+				<ListViewItem Foreground="#ACC1EA">
+					<ListViewItem.InputBindings>
+						<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="2"/>
+					</ListViewItem.InputBindings>
+
 					<StackPanel Orientation="Horizontal">
 						<Image Source="\Resources/device.png" Width="50"/>
 						<TextBlock Text="Устройства" VerticalAlignment="Center"/>
@@ -59,12 +59,8 @@
 				</ListViewItem>
 			</ListView>
 
-			<StackPanel Grid.Row="1" Grid.Column="1" x:Name="MainPanel">
-				<DataGrid ItemsSource="{Binding MembersList}">
-					<DataGrid.DataContext>
-						<vm:MembersViewModel/>
-					</DataGrid.DataContext>
-				</DataGrid>
+			<StackPanel Grid.Row="1" Grid.Column="1">
+				<ContentControl Content="{Binding MainPanelView}"/>
 			</StackPanel>
 		</Grid>
 	</Border>
