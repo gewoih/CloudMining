@@ -1,8 +1,10 @@
 ﻿using CloudMining.Infrastructure.Commands;
 using CloudMining.Models;
+using CloudMining.Views.Windows;
 using System;
 using System.Collections.ObjectModel;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 using System.Windows.Input;
 
 namespace CloudMining.ViewModels
@@ -12,6 +14,7 @@ namespace CloudMining.ViewModels
 		#region Constructor
 		public MembersViewModel()
 		{
+			AddNewMemberCommand = new RelayCommand(OnAddNewMemberCommandExecuted, CanAddNewMemberCommandExecute);
 			LoadMembersCommand = new RelayCommand(OnLoadMembersCommandExecuted, CanLoadMembersCommandExecute);
 			LoadMembersCommand.Execute(null);
 		}
@@ -43,6 +46,21 @@ namespace CloudMining.ViewModels
 												reader["name"].ToString(),
 												Convert.ToDateTime(reader["join_date"]),
 												Convert.ToDouble(reader["fee"])));
+			}
+		}
+		#endregion
+
+		#region AddNewMemberCommand
+		public ICommand AddNewMemberCommand { get; }
+		private bool CanAddNewMemberCommandExecute(object p) => true;
+		private void OnAddNewMemberCommandExecuted(object p)
+		{
+			NewMemberForm newForm = new NewMemberForm();
+
+			if (newForm.ShowDialog().Equals(DialogResult.OK))
+			{
+				MessageBox.Show("Участник создан!");
+
 			}
 		}
 		#endregion

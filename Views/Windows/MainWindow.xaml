@@ -6,62 +6,58 @@
 		xmlns:vm="clr-namespace:CloudMining.ViewModels"
         mc:Ignorable="d"
         Height="600" Width="920"
-		WindowStyle="None"
-		Background="Transparent"
-		AllowsTransparency="True"
 		ResizeMode="NoResize"
-		WindowStartupLocation="CenterScreen">
+		WindowStartupLocation="CenterScreen"
+		Background="#2F4166">
 
 	<Window.DataContext>
 		<vm:MainWindowViewModel/>
 	</Window.DataContext>
-	
-	<Border Background="#2F4166" CornerRadius="20">
-		<Grid ShowGridLines="True">
-			<Grid.ColumnDefinitions>
-				<ColumnDefinition Width="*"/>
-				<ColumnDefinition Width="3*"/>
-			</Grid.ColumnDefinitions>
-			<Grid.RowDefinitions>
-				<RowDefinition Height="*"/>
-				<RowDefinition Height="10*"/>
-			</Grid.RowDefinitions>
 
-			<DockPanel Grid.ColumnSpan="2">
-				<TextBlock Text="CloudMining" Foreground="#6D97EA" FontSize="28" FontWeight="UltraBold" Margin="15, 0" VerticalAlignment="Center"/>
-				<Rectangle HorizontalAlignment="Right" Fill="#031E53" Width="40" Height="40" RadiusX="10" RadiusY="10" Margin="0, 0, 20, 0">
-					<Rectangle.InputBindings>
-						<MouseBinding Command="{Binding CloseWindowCommand}" MouseAction="LeftClick"/>
-					</Rectangle.InputBindings>
-				</Rectangle>
-			</DockPanel>
+	<Grid ShowGridLines="True">
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition Width="*"/>
+			<ColumnDefinition Width="2.5*"/>
+		</Grid.ColumnDefinitions>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="10*"/>
+		</Grid.RowDefinitions>
 
-			<ListView Grid.Row="1" Foreground="White" FontSize="24">
-				<ListViewItem Foreground="#ACC1EA">
-					<ListViewItem.InputBindings>
-						<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="1"/>
-					</ListViewItem.InputBindings>
+		<DockPanel Grid.ColumnSpan="2">
+			<TextBlock Text="CloudMining" Foreground="#6D97EA" FontSize="28" FontWeight="UltraBold" Margin="15, 0" VerticalAlignment="Center"/>
+		</DockPanel>
 
-					<StackPanel Orientation="Horizontal">
-						<Image Source="\Resources/member.png" Width="50"/>
-						<TextBlock Text="Участники" VerticalAlignment="Center"/>
-					</StackPanel>
-				</ListViewItem>
-				<ListViewItem Foreground="#ACC1EA">
-					<ListViewItem.InputBindings>
-						<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="2"/>
-					</ListViewItem.InputBindings>
+		<ListView Grid.Row="1" Foreground="White" FontSize="24">
+			<ListViewItem Foreground="#ACC1EA">
+				<ListViewItem.InputBindings>
+					<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="1"/>
+				</ListViewItem.InputBindings>
 
-					<StackPanel Orientation="Horizontal">
-						<Image Source="\Resources/device.png" Width="50"/>
-						<TextBlock Text="Устройства" VerticalAlignment="Center"/>
-					</StackPanel>
-				</ListViewItem>
-			</ListView>
+				<StackPanel Orientation="Horizontal">
+					<Image Source="\Resources/member.png" Width="50"/>
+					<TextBlock Text="Участники" VerticalAlignment="Center"/>
+				</StackPanel>
+			</ListViewItem>
+			<ListViewItem Foreground="#ACC1EA">
+				<ListViewItem.InputBindings>
+					<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="2"/>
+				</ListViewItem.InputBindings>
 
-			<StackPanel Grid.Row="1" Grid.Column="1">
-				<ContentControl Content="{Binding MainContentControl}"/>
-			</StackPanel>
-		</Grid>
-	</Border>
+				<StackPanel Orientation="Horizontal">
+					<Image Source="\Resources/device.png" Width="50"/>
+					<TextBlock Text="Оборудование" VerticalAlignment="Center"/>
+				</StackPanel>
+			</ListViewItem>
+		</ListView>
+
+		<StatusBar Grid.Row="1" Grid.ColumnSpan="2" Height="20" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
+			<StatusBarItem Content="Раненко Никита Максимович"/>
+			<StatusBarItem Content="id:1"/>
+		</StatusBar>
+
+		<StackPanel Grid.Row="1" Grid.Column="1" Margin="20">
+			<ContentControl Content="{Binding MainContentControl}"/>
+		</StackPanel>
+	</Grid>
 </Window>

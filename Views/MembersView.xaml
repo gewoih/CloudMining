@@ -11,8 +11,16 @@
 	<UserControl.DataContext>
 		<vm:MembersViewModel/>
 	</UserControl.DataContext>
-	
-	<Grid Margin="20">
-		<DataGrid ItemsSource="{Binding MembersList}" IsReadOnly="True"/>
+
+	<Grid>
+		<DataGrid ItemsSource="{Binding MembersList}" IsReadOnly="True">
+			<DataGrid.ContextMenu>
+				<ContextMenu>
+					<MenuItem Header="Информация об участнике" Command="{Binding AddNewMemberCommand}"/>
+					<Separator/>
+					<MenuItem Header="Добавить участника"/>
+				</ContextMenu>
+			</DataGrid.ContextMenu>
+		</DataGrid>
 	</Grid>
 </UserControl>
