@@ -9,7 +9,8 @@
 		Height="400" Width="600"
 		Background="#2F4166"
 		FontSize="20"
-		WindowStartupLocation="CenterScreen">
+		WindowStartupLocation="CenterScreen"
+		Loaded="Window_Loaded">
 
 	<Grid>
 		<Grid.RowDefinitions>
@@ -21,7 +22,7 @@
 			<Grid>
 				<Grid.RowDefinitions>
 					<RowDefinition/>
-					<RowDefinition/>
+					<RowDefinition Height="*"/>
 					<RowDefinition/>
 				</Grid.RowDefinitions>
 				<Grid.ColumnDefinitions>
@@ -33,12 +34,21 @@
 				<Label Grid.Row="1" Content="Тип участника:" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#ACC1EA"/>
 				<Label Grid.Row="2" Content="Дата вступления:" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#ACC1EA"/>
 
-				<TextBox Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="#ACC1EA" Margin="10"/>
-				<ComboBox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="#ACC1EA" Margin="10" IsReadOnly="True"/>
-				<DatePicker Grid.Column="1" Grid.Row="2" Margin="10"/>
+				<TextBox x:Name="MemberNameTB" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="#ACC1EA" Margin="10"/>
+				<ComboBox x:Name="MemberTypeCB" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="#ACC1EA" Margin="10" IsReadOnly="True"/>
+				<DatePicker x:Name="MemberJoinDP" Grid.Column="1" Grid.Row="2" Margin="10"/>
 			</Grid>
 		</DockPanel>
 
-		<Button Grid.Row="1" Content="Добавить участника" Foreground="#ACC1EA" Height="Auto" Background="#031C4E" BorderThickness="0" Cursor="Hand"/>
+		<Button x:Name="AddMemberButton" 
+				Grid.Row="1" 
+				Content="Добавить участника" 
+				Foreground="#ACC1EA" 
+				Height="Auto" 
+				Background="#031C4E" 
+				BorderThickness="0" 
+				Cursor="Hand" 
+				FontSize="20"
+				Click="AddMemberButton_Click"/>
 	</Grid>
 </Window>

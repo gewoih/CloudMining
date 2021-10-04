@@ -16,9 +16,9 @@
 		<DataGrid ItemsSource="{Binding MembersList}" IsReadOnly="True">
 			<DataGrid.ContextMenu>
 				<ContextMenu>
-					<MenuItem Header="Информация об участнике" Command="{Binding AddNewMemberCommand}"/>
+					<MenuItem Header="Информация об участнике"/>
 					<Separator/>
-					<MenuItem Header="Добавить участника"/>
+					<MenuItem Header="Добавить участника" Command="{Binding AddNewMemberCommand}"/>
 				</ContextMenu>
 			</DataGrid.ContextMenu>
 		</DataGrid>
