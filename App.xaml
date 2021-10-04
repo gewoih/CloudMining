@@ -16,6 +16,10 @@
 			<DataTemplate DataType="{x:Type vm:MembersViewModel}">
 				<view:MembersView/>
 			</DataTemplate>
+
+			<DataTemplate DataType="{x:Type vm:DevicesViewModel}">
+				<view:DevicesView/>
+			</DataTemplate>
 		</ResourceDictionary>
 	</Application.Resources>
 </Application>

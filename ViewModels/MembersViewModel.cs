@@ -13,6 +13,16 @@ namespace CloudMining.ViewModels
 		public MembersViewModel()
 		{
 			LoadMembersCommand = new RelayCommand(OnLoadMembersCommandExecuted, CanLoadMembersCommandExecute);
+			LoadMembersCommand.Execute(null);
+		}
+		#endregion
+
+		#region Properties
+		private ObservableCollection<Member> _membersList = new ObservableCollection<Member>();
+		public ObservableCollection<Member> MembersList
+		{
+			get => _membersList;
+			set => Set(ref _membersList, value);
 		}
 		#endregion
 
@@ -37,50 +47,6 @@ namespace CloudMining.ViewModels
 		}
 		#endregion
 
-		#endregion
-
-		#region Properties
-		private ObservableCollection<Member> _membersList = new ObservableCollection<Member>();
-		public ObservableCollection<Member> MembersList
-		{
-			get => _membersList;
-			set => Set(ref _membersList, value);
-		}
-
-		private int _id;
-		public int Id
-		{
-			get => _id;
-			set => Set(ref _id, value);
-		}
-
-		private string _role;
-		public string Role
-		{
-			get => _role;
-			set => Set(ref _role, value);
-		}
-
-		private string _name;
-		public string Name
-		{
-			get => _name;
-			set => Set(ref _name, value);
-		}
-
-		private DateTime _joinDate;
-		public DateTime JoinDate
-		{
-			get => _joinDate;
-			set => Set(ref _joinDate, value);
-		}
-
-		private double _fee;
-		public double Fee
-		{
-			get => _fee;
-			set => Set(ref _fee, value);
-		}
 		#endregion
 	}
 }

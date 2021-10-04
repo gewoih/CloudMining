@@ -16,31 +16,25 @@ namespace CloudMining.ViewModels
 			set => Set(ref _membersVM, value);
 		}
 
+		private DevicesViewModel _devicesVM = new DevicesViewModel();
+		public DevicesViewModel DevicesVM
+		{
+			get => _devicesVM;
+			set => Set(ref _devicesVM, value);
+		}
+
 		private int _menuIndex = 0;
 		public int MenuIndex
 		{
 			get => _menuIndex;
-			set
-			{
-				Set(ref _menuIndex, value);
-
-				switch (MenuIndex)
-				{
-					case 1:
-						MembersVM.LoadMembersCommand.Execute(null);
-						MainPanelView = MembersVM;
-						break;
-					case 2:
-						break;
-				}
-			}
+			set => Set(ref _menuIndex, value);
 		}
 
-		private object _mainPanelView;
-		public object MainPanelView
+		private object _mainContentControl;
+		public object MainContentControl
 		{
-			get => _mainPanelView;
-			set => Set(ref _mainPanelView, value);
+			get => _mainContentControl;
+			set => Set(ref _mainContentControl, value);
 		}
 		#endregion
 
@@ -50,12 +44,6 @@ namespace CloudMining.ViewModels
 			ChangeMenuIndexCommand = new RelayCommand(OnChangeMenuIndexCommandExecuted, CanChangeMenuIndexCommandExecute);
 			CloseWindowCommand = new RelayCommand(OnCloseWindowCommandExecuted, CanCloseWindowCommandExecute);
 		}
-		#endregion
-
-		#region Methods
-
-
-
 		#endregion
 
 		#region Commands
@@ -72,6 +60,16 @@ namespace CloudMining.ViewModels
 		private void OnChangeMenuIndexCommandExecuted(object p)
 		{
 			MenuIndex = Convert.ToInt32(p);
+
+			switch (MenuIndex)
+			{
+				case 1:
+					MainContentControl = MembersVM;
+					break;
+				case 2:
+					MainContentControl = DevicesVM;
+					break;
+			}
 		}
 		#endregion
 

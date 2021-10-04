@@ -13,6 +13,7 @@ namespace CloudMining.ViewModels
 		public DevicesViewModel()
 		{
 			LoadDevicesCommand = new RelayCommand(OnLoadDevicesCommandExecuted, CanLoadDevicesCommandExecute);
+			LoadDevicesCommand.Execute(null);
 		}
 		#endregion
 
@@ -22,48 +23,6 @@ namespace CloudMining.ViewModels
 		{
 			get => _devicesList;
 			set => Set(ref _devicesList, value);
-		}
-
-		private int _id;
-		public int Id
-		{
-			get => _id;
-			set => Set(ref _id, value);
-		}
-
-		private string _workerName;
-		public string WorkerName
-		{
-			get => _workerName;
-			set => Set(ref _workerName, value);
-		}
-
-		private DateTime _purchaseDate;
-		public DateTime PurchaseDate
-		{
-			get => _purchaseDate;
-			set => Set(ref _purchaseDate, value);
-		}
-
-		private double _hashrate;
-		public double Hashrate
-		{
-			get => _hashrate;
-			set => Set(ref _hashrate, value);
-		}
-
-		private string _currency;
-		public string Currency
-		{
-			get => _currency;
-			set => Set(ref _currency, value);
-		}
-
-		private int _consumption;
-		public int Consumption
-		{
-			get => _consumption;
-			set => Set(ref _consumption, value);
 		}
 		#endregion
 
