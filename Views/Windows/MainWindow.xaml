@@ -49,12 +49,17 @@
 					<TextBlock Text="Оборудование" VerticalAlignment="Center"/>
 				</StackPanel>
 			</ListViewItem>
-		</ListView>
+			<ListViewItem Foreground="#ACC1EA">
+				<ListViewItem.InputBindings>
+					<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="3"/>
+				</ListViewItem.InputBindings>
 
-		<StatusBar Grid.Row="1" Grid.ColumnSpan="2" Height="20" HorizontalAlignment="Stretch" VerticalAlignment="Bottom">
-			<StatusBarItem Content="Раненко Никита Максимович"/>
-			<StatusBarItem Content="id:1"/>
-		</StatusBar>
+				<StackPanel Orientation="Horizontal">
+					<Image Source="\Resources/deposit.png" Width="50"/>
+					<TextBlock Text="Пополнения" VerticalAlignment="Center"/>
+				</StackPanel>
+			</ListViewItem>
+		</ListView>
 
 		<StackPanel Grid.Row="1" Grid.Column="1" Margin="20">
 			<ContentControl Content="{Binding MainContentControl}"/>

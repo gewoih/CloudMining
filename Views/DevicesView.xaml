@@ -12,7 +12,7 @@
 		<vm:DevicesViewModel/>
 	</UserControl.DataContext>
 
-	<Grid Margin="20">
+	<Grid>
 		<DataGrid ItemsSource="{Binding DevicesList}" IsReadOnly="True"/>
 	</Grid>
 </UserControl>

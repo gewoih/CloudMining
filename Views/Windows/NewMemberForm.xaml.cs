@@ -42,7 +42,11 @@ namespace CloudMining.Views.Windows
 			SQL connection = new SQL();
 
 			if (!MemberNameTB.Equals(String.Empty) && !MemberTypeCB.SelectedIndex.Equals(-1) && MemberJoinDP.SelectedDate <= DateTime.Now)
+			{
 				connection.Execute("insert into members values(" + membersTypes[MemberTypeCB.Text] + ", '" + MemberNameTB.Text + "', " + "'" + MemberJoinDP.SelectedDate + "')");
+				this.DialogResult = true;
+				this.Close();
+			}
 			else
 				MessageBox.Show("Введите корректные данные!");
 		}

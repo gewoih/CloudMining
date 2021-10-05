@@ -11,7 +11,7 @@ namespace CloudMining
 
 		public SQL()
 		{
-			this.connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\nrane\Desktop\Проекты\CloudMining\Database\CloudMiningDB.mdf";
+			this.connectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\ranenko\Desktop\Проекты\CloudMining\CloudMiningDB.mdf";
 			this.connection = new SqlConnection(this.connectionString);
 			this.connection.Open();
 		}

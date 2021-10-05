@@ -23,6 +23,13 @@ namespace CloudMining.ViewModels
 			set => Set(ref _devicesVM, value);
 		}
 
+		private DepositsViewModel _depositsVM = new DepositsViewModel();
+		public DepositsViewModel DepositsVM
+		{
+			get => _depositsVM;
+			set => Set(ref _depositsVM, value);
+		}
+
 		private int _menuIndex = 0;
 		public int MenuIndex
 		{
@@ -68,6 +75,9 @@ namespace CloudMining.ViewModels
 					break;
 				case 2:
 					MainContentControl = DevicesVM;
+					break;
+				case 3:
+					MainContentControl = DepositsVM;
 					break;
 			}
 		}
