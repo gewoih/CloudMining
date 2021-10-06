@@ -31,18 +31,6 @@ namespace CloudMining.ViewModels
 		private bool CanLoadDevicesCommandExecute(object p) => true;
 		private void OnLoadDevicesCommandExecuted(object p)
 		{
-			SQL connection = new SQL();
-
-			SqlDataReader reader = connection.Execute("select devices.id, worker_name, purchase_date, hashrate, currency_dict.short_name as currency, consumption from devices join currency_dict ON devices.currency_id = currency_dict.id order by purchase_date");
-			while (reader.Read())
-			{
-				this.DevicesList.Add(new Device(Convert.ToInt32(reader["id"]),
-												reader["worker_name"].ToString(),
-												String.Format("{0:dd.MM.yyyy}", reader["purchase_date"]),
-												Convert.ToDouble(reader["hashrate"]),
-												reader["currency"].ToString(),
-												Convert.ToInt32(reader["consumption"])));
-			}
 		}
 		#endregion
 	}

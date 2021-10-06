@@ -36,18 +36,7 @@ namespace CloudMining.ViewModels
 		private bool CanLoadMembersCommandExecute(object p) => true;
 		private void OnLoadMembersCommandExecuted(object p)
 		{
-			SQL connection = new SQL();
-			this.MembersList.Clear();
 
-			SqlDataReader reader = connection.Execute("select members.id, members_types_dict.name as role, members.name, join_date, ISNULL(s.res, 0) as invested from members join members_types_dict ON members.type=members_types_dict.id LEFT join (select sum(o.amount) as res, o.from_member_id from operations as o group by o.from_member_id) as s ON s.from_member_id = members.id;");
-			while (reader.Read())
-			{
-				this.MembersList.Add(new Member(Convert.ToInt32(reader["id"]),
-												reader["role"].ToString(),
-												reader["name"].ToString(),
-												String.Format("{0:dd.MM.yyyy}", reader["join_date"]),
-												Convert.ToDouble(reader["invested"])));
-			}
 		}
 		#endregion
 

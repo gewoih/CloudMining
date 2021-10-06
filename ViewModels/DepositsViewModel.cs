@@ -35,18 +35,6 @@ namespace CloudMining.ViewModels
 		private bool CanLoadDepositsCommandExecute(object p) => true;
 		private void OnLoadDepositsCommandExecuted(object p)
 		{
-			SQL connection = new SQL();
-			this.DepositsList.Clear();
-
-			SqlDataReader reader = connection.Execute("select operations.id, members.name as member, operations.date, operations.amount, operations.comment from operations join members on operations.from_member_id=members.id where operations.operation_type=1");
-			while (reader.Read())
-			{
-				this.DepositsList.Add(new Deposit(Convert.ToInt32(reader["id"]),
-													reader["date"].ToString(),
-													Convert.ToDouble(reader["amount"]),
-													reader["comment"].ToString(),
-													reader["member"].ToString()));
-			}
 		}
 		#endregion
 
