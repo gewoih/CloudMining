@@ -9,7 +9,7 @@ namespace CloudMining.Models
 		public DateTime purchaseDate { get; set; }
 		public double hashrate { get; set; }
 		public int currencyId { get; set; }
-		public Currency Currency { get; set; }
+		public virtual Currency Currency { get; set; }
 		public int consumption { get; set; }
 	}
 }

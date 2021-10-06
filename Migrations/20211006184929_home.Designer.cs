@@ -4,14 +4,16 @@ using CloudMining.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CloudMining.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20211006184929_home")]
+    partial class home
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -108,9 +110,6 @@ namespace CloudMining.Migrations
                     b.Property<int>("roleId")
                         .HasColumnType("int");
 
-                    b.Property<int>("x")
-                        .HasColumnType("int");
-
                     b.HasKey("id");
 
                     b.HasIndex("roleId");
@@ -150,7 +149,7 @@ namespace CloudMining.Migrations
             modelBuilder.Entity("CloudMining.Models.Device", b =>
                 {
                     b.HasOne("CloudMining.Models.Currency", "Currency")
-                        .WithMany("Devices")
+                        .WithMany()
                         .HasForeignKey("currencyId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -161,7 +160,7 @@ namespace CloudMining.Migrations
             modelBuilder.Entity("CloudMining.Models.Member", b =>
                 {
                     b.HasOne("CloudMining.Models.Role", "Role")
-                        .WithMany("Members")
+                        .WithMany()
                         .HasForeignKey("roleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -169,19 +168,9 @@ namespace CloudMining.Migrations
                     b.Navigation("Role");
                 });
 
-            modelBuilder.Entity("CloudMining.Models.Currency", b =>
-                {
-                    b.Navigation("Devices");
-                });
-
             modelBuilder.Entity("CloudMining.Models.Member", b =>
                 {
                     b.Navigation("Deposits");
-                });
-
-            modelBuilder.Entity("CloudMining.Models.Role", b =>
-                {
-                    b.Navigation("Members");
                 });
 #pragma warning restore 612, 618
         }

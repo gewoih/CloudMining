@@ -1,4 +1,7 @@
 ﻿using CloudMining.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 
 namespace CloudMining.Views.Windows
@@ -8,8 +11,6 @@ namespace CloudMining.Views.Windows
 	/// </summary>
 	public partial class NewMemberForm : Window
 	{
-		//private Dictionary<string, int> membersTypes = new Dictionary<string, int>();
-
 		public NewMemberForm()
 		{
 			InitializeComponent();
@@ -17,12 +18,19 @@ namespace CloudMining.Views.Windows
 
 		private void Window_Loaded(object sender, RoutedEventArgs e)
 		{
-			//Подгрузка ComboBox
+			MemberTypeCB.ItemsSource = DataWorker.GetRoles().Select(r => r.name);
 		}
 
 		private void AddMemberButton_Click(object sender, RoutedEventArgs e)
 		{
-			DataWorker dataWorker = new DataWorker();
+			if (!MemberNameTB.Equals(String.Empty) && !MemberTypeCB.SelectedIndex.Equals(-1) && MemberJoinDP.SelectedDate <= DateTime.Now)
+			{
+				DataWorker.CreateMember(new Member(DataWorker.GetRoles()[MemberTypeCB.SelectedIndex].id, MemberNameTB.Text, MemberJoinDP.Text));
+				this.DialogResult = true;
+				this.Close();
+			}
+			else
+				MessageBox.Show("Введите корректные данные!");
 		}
 	}
 }

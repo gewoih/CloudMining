@@ -9,6 +9,7 @@ namespace CloudMining.Data
 		public DbSet<Deposit> Deposits { get; set; }
 		public DbSet<Device> Devices { get; set; }
 		public DbSet<Currency> Currencies { get; set; }
+		public DbSet<Role> Roles { get; set; }
 
 		public ApplicationContext()
 		{

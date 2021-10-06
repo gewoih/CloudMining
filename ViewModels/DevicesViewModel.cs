@@ -9,28 +9,12 @@ namespace CloudMining.ViewModels
 {
 	internal class DevicesViewModel : BaseViewModel
 	{
-		#region Constructor
-		public DevicesViewModel()
-		{
-			LoadDevicesCommand = new RelayCommand(OnLoadDevicesCommandExecuted, CanLoadDevicesCommandExecute);
-			LoadDevicesCommand.Execute(null);
-		}
-		#endregion
-
 		#region Properties
-		private ObservableCollection<Device> _devicesList = new ObservableCollection<Device>();
+		private ObservableCollection<Device> _devicesList = new ObservableCollection<Device>(DataWorker.GetDevices());
 		public ObservableCollection<Device> DevicesList
 		{
 			get => _devicesList;
 			set => Set(ref _devicesList, value);
-		}
-		#endregion
-
-		#region Commands
-		public ICommand LoadDevicesCommand { get; }
-		private bool CanLoadDevicesCommandExecute(object p) => true;
-		private void OnLoadDevicesCommandExecuted(object p)
-		{
 		}
 		#endregion
 	}

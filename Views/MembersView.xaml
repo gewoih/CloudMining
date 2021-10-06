@@ -13,12 +13,20 @@
 	</UserControl.DataContext>
 
 	<Grid>
-		<DataGrid ItemsSource="{Binding MembersList}" IsReadOnly="True">
+		<DataGrid ItemsSource="{Binding MembersList}" IsReadOnly="True" AutoGenerateColumns="False">
 			<DataGrid.ContextMenu>
 				<ContextMenu>
 					<MenuItem Header="Добавить участника" Command="{Binding AddNewMemberCommand}"/>
 				</ContextMenu>
 			</DataGrid.ContextMenu>
+
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="id" Binding="{Binding id}"/>
+				<DataGridTextColumn Header="Имя" Binding="{Binding name}"/>
+				<DataGridTextColumn Header="Роль" Binding="{Binding Role.name}"/>
+				<DataGridTextColumn Header="Дата вступления" Binding="{Binding joinDate}"/>
+				<DataGridTextColumn Header="Сумма пополнений" Binding="{Binding Deposits}"/>
+			</DataGrid.Columns>
 		</DataGrid>
 	</Grid>
 </UserControl>

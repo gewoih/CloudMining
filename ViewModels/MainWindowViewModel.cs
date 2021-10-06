@@ -49,17 +49,10 @@ namespace CloudMining.ViewModels
 		public MainWindowViewModel()
 		{
 			ChangeMenuIndexCommand = new RelayCommand(OnChangeMenuIndexCommandExecuted, CanChangeMenuIndexCommandExecute);
-			CloseWindowCommand = new RelayCommand(OnCloseWindowCommandExecuted, CanCloseWindowCommandExecute);
 		}
 		#endregion
 
 		#region Commands
-
-		#region CloseWindow
-		public ICommand CloseWindowCommand { get; }
-		private bool CanCloseWindowCommandExecute(object parameter) => true;
-		private void OnCloseWindowCommandExecuted(object parameter) => Application.Current.Shutdown();
-		#endregion
 
 		#region ChangeMenuIndex
 		public ICommand ChangeMenuIndexCommand { get; }

@@ -15,13 +15,11 @@ namespace CloudMining.ViewModels
 		public MembersViewModel()
 		{
 			AddNewMemberCommand = new RelayCommand(OnAddNewMemberCommandExecuted, CanAddNewMemberCommandExecute);
-			LoadMembersCommand = new RelayCommand(OnLoadMembersCommandExecuted, CanLoadMembersCommandExecute);
-			LoadMembersCommand.Execute(null);
 		}
 		#endregion
 
 		#region Properties
-		private ObservableCollection<Member> _membersList = new ObservableCollection<Member>();
+		private ObservableCollection<Member> _membersList = new ObservableCollection<Member>(DataWorker.GetMembers());
 		public ObservableCollection<Member> MembersList
 		{
 			get => _membersList;
@@ -30,15 +28,6 @@ namespace CloudMining.ViewModels
 		#endregion
 
 		#region Commands
-
-		#region LoadMembersCommand
-		public ICommand LoadMembersCommand { get; }
-		private bool CanLoadMembersCommandExecute(object p) => true;
-		private void OnLoadMembersCommandExecuted(object p)
-		{
-
-		}
-		#endregion
 
 		#region AddNewMemberCommand
 		public ICommand AddNewMemberCommand { get; }
@@ -49,8 +38,7 @@ namespace CloudMining.ViewModels
 
 			if (newForm.ShowDialog() == true)
 			{
-				this.LoadMembersCommand.Execute(null);
-
+				this.MembersList = new ObservableCollection<Member>(DataWorker.GetMembers());
 				MessageBox.Show("Участник создан!");
 			}
 		}
