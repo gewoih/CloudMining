@@ -1,14 +1,12 @@
-﻿using System;
+﻿using CloudMining.Models.Base;
 
 namespace CloudMining.Models
 {
-	internal class Deposit
+	internal class Deposit : Entity
 	{
-		public int id { get; set; }
-		public int? MemberId { get; set; }
 		public virtual Member Member { get; set; }
-		public DateTime date { get; set; }
-		public double amount { get; set; }
-		public string comment { get; set; }
+		public string Date { get; set; }
+		public double Amount { get; set; }
+		public string Comment { get; set; }
 	}
 }

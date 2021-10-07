@@ -1,12 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using CloudMining.Models.Base;
+using System.Collections.Generic;
 
 namespace CloudMining.Models
 {
-	internal class Currency
+	internal class Currency : NamedEntity
 	{
-		public int id { get; set; }
-		public string shortName { get; set; }
-		public string longName { get; set; }
-		public virtual List<Device> Devices { get; set; } = new List<Device>();
+		public string ShortName { get; set; }
+		public virtual List<Device> Devices { get; set; }
 	}
 }

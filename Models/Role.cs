@@ -1,14 +1,11 @@
-﻿using System;
+﻿using CloudMining.Models.Base;
 using System.Collections.Generic;
-using System.Text;
 
 namespace CloudMining.Models
 {
-	internal class Role
+	internal class Role : NamedEntity
 	{
-		public int id { get; set; }
-		public string name { get; set; }
-		public double fee { get; set; }
-		public virtual List<Member> Members { get; set; } = new List<Member>();
+		public double Fee { get; set; }
+		public virtual List<Member> Members { get; set; }
 	}
 }
