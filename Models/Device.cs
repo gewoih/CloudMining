@@ -5,8 +5,9 @@ namespace CloudMining.Models
 	internal class Device : NamedEntity
 	{
 		public string PurchaseDate { get; set; }
-		public double hashrate { get; set; }
+		public double Hashrate { get; set; }
+		public int CurrencyId { get; set; }
 		public virtual Currency Currency { get; set; }
-		public int consumption { get; set; }
+		public int Consumption { get; set; }
 	}
 }

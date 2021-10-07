@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using CloudMining.Models;
+using System.Windows;
 
 namespace CloudMining
 {

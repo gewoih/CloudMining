@@ -14,13 +14,13 @@ namespace CloudMining.Data
 
 		public ApplicationContext()
 		{
-			Database.EnsureDeleted();
+			//Database.EnsureDeleted();
 			Database.EnsureCreated();
 
-			Roles.Add(new Role { name = "Участник", fee = 0 });
-			Roles.Add(new Role { name = "Администратор", fee = 3 });
-			Roles.Add(new Role { name = "Менеджер", fee = 5 });
-			SaveChanges();
+			/*Roles.Add(new Role { Name = "Участник", Fee = 0 });
+			Roles.Add(new Role { Name = "Администратор", Fee = 3 });
+			Roles.Add(new Role { Name = "Менеджер", Fee = 5 });
+			SaveChanges();*/
 		}
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

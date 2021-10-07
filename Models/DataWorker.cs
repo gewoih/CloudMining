@@ -1,16 +1,23 @@
 ﻿using CloudMining.Data;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows;
 
 namespace CloudMining.Models
 {
 	internal static class DataWorker
 	{
 		#region Member
-		public static void CreateMember(Member newMember)
+		public static void CreateMember(string _name, Role _role, string _joinDate)
 		{
 			using (ApplicationContext db = new ApplicationContext())
 			{
+				Member newMember = new Member
+				{
+					Name = _name,
+					RoleId = _role.Id,
+					JoinDate = _joinDate
+				};
 				db.Members.Add(newMember);
 				db.SaveChanges();
 			}
@@ -20,7 +27,8 @@ namespace CloudMining.Models
 		{
 			using (ApplicationContext db = new ApplicationContext())
 			{
-				return db.Members.ToList();
+				var members = db.Members.ToList();
+				return members;
 			}
 		}
 		#endregion
@@ -39,7 +47,8 @@ namespace CloudMining.Models
 		{
 			using (ApplicationContext db = new ApplicationContext())
 			{
-				return db.Deposits.ToList();
+				var deposits = db.Deposits.ToList();
+				return deposits;
 			}
 		}
 		#endregion
@@ -58,16 +67,22 @@ namespace CloudMining.Models
 		{
 			using (ApplicationContext db = new ApplicationContext())
 			{
-				return db.Devices.ToList();
+				var devices = db.Devices.ToList();
+				return devices;
 			}
 		}
 		#endregion
 
 		#region Role
-		public static void CreateRole(Role newRole)
+		public static void CreateRole(string name, double fee)
 		{
 			using (ApplicationContext db = new ApplicationContext())
 			{
+				Role newRole = new Role
+				{
+					Name = name,
+					Fee = fee
+				};
 				db.Roles.Add(newRole);
 				db.SaveChanges();
 			}
@@ -77,15 +92,8 @@ namespace CloudMining.Models
 		{
 			using (ApplicationContext db = new ApplicationContext())
 			{
-				return db.Roles.ToList();
-			}
-		}
-
-		public static List<string> GetRolesNames()
-		{
-			using (ApplicationContext db = new ApplicationContext())
-			{
-				return db.Roles.Select(r => r.name).ToList();
+				var roles = db.Roles.ToList();
+				return roles;
 			}
 		}
 		#endregion

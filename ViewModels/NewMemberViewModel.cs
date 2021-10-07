@@ -1,6 +1,7 @@
 ﻿using CloudMining.Infrastructure.Commands;
 using CloudMining.Models;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Windows;
@@ -8,18 +9,18 @@ using System.Windows.Input;
 
 namespace CloudMining.ViewModels
 {
-	internal class AddNewMemberViewModel : BaseViewModel
+	internal class NewMemberViewModel : BaseViewModel
 	{
 		#region Constructor
-		public AddNewMemberViewModel()
+		public NewMemberViewModel()
 		{
 			AddNewMemberCommand = new RelayCommand(OnAddNewMemberCommandExecuted, CanAddNewMemberCommandExecute);
 		}
 		#endregion
 
 		#region Properties
-		private ObservableCollection<string> _rolesList = new ObservableCollection<string>(DataWorker.GetRoles().Select(r => r.name));
-		public ObservableCollection<string> RolesList
+		private ObservableCollection<Role> _rolesList = new ObservableCollection<Role>(DataWorker.GetRoles());
+		public ObservableCollection<Role> RolesList
 		{
 			get => _rolesList;
 			set => Set(ref _rolesList, _rolesList);
@@ -54,9 +55,9 @@ namespace CloudMining.ViewModels
 		private bool CanAddNewMemberCommandExecute(object p) => true;
 		private void OnAddNewMemberCommandExecuted(object p)
 		{
-			if (!this.Name.Equals(String.Empty) && !this.Role.Equals(String.Empty) && DateTime.Parse(this.JoinDate) <= DateTime.Now)
+			if (!this.Name.Equals(String.Empty) && DateTime.Parse(this.JoinDate) <= DateTime.Now)
 			{
-				DataWorker.CreateMember(new Member { name = this.Name, RoleId = DataWorker.GetRoles().First(r => r.name.Equals(this.Role)).id, joinDate = this.JoinDate });
+				DataWorker.CreateMember(Name, RolesList.FirstOrDefault(r => r.Name == this.Role), JoinDate);
 			}
 			else
 				MessageBox.Show("Введите корректные данные!");

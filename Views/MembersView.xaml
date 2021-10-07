@@ -5,6 +5,7 @@
 			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 			 xmlns:vm="clr-namespace:CloudMining.ViewModels"
 			 xmlns:local="clr-namespace:CloudMining.Views"
+			 xmlns:c="clr-namespace:CloudMining.Data"
 			 mc:Ignorable="d" 
 			 d:DesignHeight="450" d:DesignWidth="800">
 
@@ -21,10 +22,10 @@
 			</DataGrid.ContextMenu>
 
 			<DataGrid.Columns>
-				<DataGridTextColumn Header="id" Binding="{Binding id}"/>
-				<DataGridTextColumn Header="Имя" Binding="{Binding name}"/>
-				<DataGridTextColumn Header="Роль" Binding="{Binding Role.name}"/>
-				<DataGridTextColumn Header="Дата вступления" Binding="{Binding joinDate}"/>
+				<DataGridTextColumn Header="id" Binding="{Binding Id}"/>
+				<DataGridTextColumn Header="Имя" Binding="{Binding Name}"/>
+				<DataGridTextColumn Header="Роль" Binding="{Binding Role.Name}"/>
+				<DataGridTextColumn Header="Дата вступления" Binding="{Binding JoinDate}"/>
 				<DataGridTextColumn Header="Сумма пополнений" Binding="{Binding Deposits.Count}"/>
 			</DataGrid.Columns>
 		</DataGrid>
