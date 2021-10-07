@@ -9,11 +9,6 @@ namespace CloudMining.Models
 		public int id { get; set; }
 		public string name { get; set; }
 		public double fee { get; set; }
-		public virtual List<Member> Members { get; set; }
-
-		public Role()
-		{
-			this.Members = new List<Member>();
-		}
+		public virtual List<Member> Members { get; set; } = new List<Member>();
 	}
 }

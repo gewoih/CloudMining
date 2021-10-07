@@ -7,11 +7,6 @@ namespace CloudMining.Models
 		public int id { get; set; }
 		public string shortName { get; set; }
 		public string longName { get; set; }
-		public virtual List<Device> Devices { get; set; }
-
-		public Currency()
-		{
-			this.Devices = new List<Device>();
-		}
+		public virtual List<Device> Devices { get; set; } = new List<Device>();
 	}
 }

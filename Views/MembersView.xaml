@@ -25,7 +25,7 @@
 				<DataGridTextColumn Header="Имя" Binding="{Binding name}"/>
 				<DataGridTextColumn Header="Роль" Binding="{Binding Role.name}"/>
 				<DataGridTextColumn Header="Дата вступления" Binding="{Binding joinDate}"/>
-				<DataGridTextColumn Header="Сумма пополнений" Binding="{Binding Deposits}"/>
+				<DataGridTextColumn Header="Сумма пополнений" Binding="{Binding Deposits.Count}"/>
 			</DataGrid.Columns>
 		</DataGrid>
 	</Grid>

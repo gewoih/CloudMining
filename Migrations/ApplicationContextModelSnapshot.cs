@@ -44,6 +44,9 @@ namespace CloudMining.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("MemberId")
+                        .HasColumnType("int");
+
                     b.Property<double>("amount")
                         .HasColumnType("float");
 
@@ -53,12 +56,9 @@ namespace CloudMining.Migrations
                     b.Property<DateTime>("date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("memberId")
-                        .HasColumnType("int");
-
                     b.HasKey("id");
 
-                    b.HasIndex("memberId");
+                    b.HasIndex("MemberId");
 
                     b.ToTable("Deposits");
                 });
@@ -70,10 +70,10 @@ namespace CloudMining.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("consumption")
+                    b.Property<int?>("CurrencyId")
                         .HasColumnType("int");
 
-                    b.Property<int>("currencyId")
+                    b.Property<int>("consumption")
                         .HasColumnType("int");
 
                     b.Property<double>("hashrate")
@@ -87,7 +87,7 @@ namespace CloudMining.Migrations
 
                     b.HasKey("id");
 
-                    b.HasIndex("currencyId");
+                    b.HasIndex("CurrencyId");
 
                     b.ToTable("Devices");
                 });
@@ -99,21 +99,18 @@ namespace CloudMining.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("RoleId")
+                        .HasColumnType("int");
+
                     b.Property<string>("joinDate")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("roleId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("x")
-                        .HasColumnType("int");
-
                     b.HasKey("id");
 
-                    b.HasIndex("roleId");
+                    b.HasIndex("RoleId");
 
                     b.ToTable("Members");
                 });
@@ -140,9 +137,7 @@ namespace CloudMining.Migrations
                 {
                     b.HasOne("CloudMining.Models.Member", "Member")
                         .WithMany("Deposits")
-                        .HasForeignKey("memberId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("MemberId");
 
                     b.Navigation("Member");
                 });
@@ -151,9 +146,7 @@ namespace CloudMining.Migrations
                 {
                     b.HasOne("CloudMining.Models.Currency", "Currency")
                         .WithMany("Devices")
-                        .HasForeignKey("currencyId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CurrencyId");
 
                     b.Navigation("Currency");
                 });
@@ -162,9 +155,7 @@ namespace CloudMining.Migrations
                 {
                     b.HasOne("CloudMining.Models.Role", "Role")
                         .WithMany("Members")
-                        .HasForeignKey("roleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("RoleId");
 
                     b.Navigation("Role");
                 });

@@ -35,12 +35,10 @@ namespace CloudMining.ViewModels
 		private void OnAddNewMemberCommandExecuted(object p)
 		{
 			NewMemberForm newForm = new NewMemberForm();
+			newForm.ShowDialog();
 
-			if (newForm.ShowDialog() == true)
-			{
-				this.MembersList = new ObservableCollection<Member>(DataWorker.GetMembers());
-				MessageBox.Show("Участник создан!");
-			}
+			this.MembersList = new ObservableCollection<Member>(DataWorker.GetMembers());
+			MessageBox.Show("Участник создан!");
 		}
 		#endregion
 
