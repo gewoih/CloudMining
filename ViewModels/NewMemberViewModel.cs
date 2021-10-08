@@ -1,5 +1,6 @@
 ﻿using CloudMining.Infrastructure.Commands;
 using CloudMining.Models;
+using CloudMining.Models.DataWorkers;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,7 +20,7 @@ namespace CloudMining.ViewModels
 		#endregion
 
 		#region Properties
-		private ObservableCollection<Role> _rolesList = new ObservableCollection<Role>(DataWorker.GetRoles());
+		private ObservableCollection<Role> _rolesList = new ObservableCollection<Role>(RoleWorker.GetRoles());
 		public ObservableCollection<Role> RolesList
 		{
 			get => _rolesList;
@@ -55,9 +56,9 @@ namespace CloudMining.ViewModels
 		private bool CanAddNewMemberCommandExecute(object p) => true;
 		private void OnAddNewMemberCommandExecuted(object p)
 		{
-			if (!this.Name.Equals(String.Empty) && DateTime.Parse(this.JoinDate) <= DateTime.Now)
+			if (!this.Name.Equals(String.Empty) && !this.Role.Equals(String.Empty) && DateTime.Parse(this.JoinDate) <= DateTime.Now)
 			{
-				DataWorker.CreateMember(Name, RolesList.FirstOrDefault(r => r.Name == this.Role), JoinDate);
+				MemberWorker.CreateMember(Name, RolesList.FirstOrDefault(r => r.Name == this.Role), JoinDate);
 			}
 			else
 				MessageBox.Show("Введите корректные данные!");

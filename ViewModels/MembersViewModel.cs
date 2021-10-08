@@ -1,5 +1,6 @@
 ﻿using CloudMining.Infrastructure.Commands;
 using CloudMining.Models;
+using CloudMining.Models.DataWorkers;
 using CloudMining.Views.Windows;
 using System;
 using System.Collections.ObjectModel;
@@ -19,7 +20,7 @@ namespace CloudMining.ViewModels
 		#endregion
 
 		#region Properties
-		private ObservableCollection<Member> _membersList = new ObservableCollection<Member>(DataWorker.GetMembers());
+		private ObservableCollection<Member> _membersList = new ObservableCollection<Member>(MemberWorker.GetMembers());
 		public ObservableCollection<Member> MembersList
 		{
 			get => _membersList;
@@ -37,7 +38,7 @@ namespace CloudMining.ViewModels
 			NewMemberForm newForm = new NewMemberForm();
 			newForm.ShowDialog();
 
-			this.MembersList = new ObservableCollection<Member>(DataWorker.GetMembers());
+			this.MembersList = new ObservableCollection<Member>(MemberWorker.GetMembers());
 			MessageBox.Show("Участник создан!");
 		}
 		#endregion

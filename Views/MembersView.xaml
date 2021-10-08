@@ -18,6 +18,7 @@
 			<DataGrid.ContextMenu>
 				<ContextMenu>
 					<MenuItem Header="Добавить участника" Command="{Binding AddNewMemberCommand}"/>
+					<MenuItem Header="Удалить участника" Command="{Binding DeleteMemberCommand}"/>
 				</ContextMenu>
 			</DataGrid.ContextMenu>
 
