@@ -25,8 +25,8 @@ namespace CloudMining.Data
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
-			optionsBuilder.UseLazyLoadingProxies();
-			optionsBuilder.EnableSensitiveDataLogging();
+			//optionsBuilder.UseLazyLoadingProxies();
+			//optionsBuilder.EnableSensitiveDataLogging();
 			optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=CloudMiningDB;Trusted_Connection=True;");
 		}
 	}

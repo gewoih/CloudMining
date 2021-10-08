@@ -58,7 +58,7 @@ namespace CloudMining.ViewModels
 		{
 			if (!this.Name.Equals(String.Empty) && !this.Role.Equals(String.Empty) && DateTime.Parse(this.JoinDate) <= DateTime.Now)
 			{
-				MemberWorker.CreateMember(Name, RolesList.FirstOrDefault(r => r.Name == this.Role), JoinDate);
+				CreateMember(Name, RolesList.FirstOrDefault(r => r.Name == this.Role), JoinDate);
 			}
 			else
 				MessageBox.Show("Введите корректные данные!");

@@ -11,11 +11,6 @@
 		Background="#2F4166"
 		FontSize="20"
 		WindowStartupLocation="CenterScreen">
-
-	<Window.DataContext>
-		<vm:NewMemberViewModel/>
-	</Window.DataContext>
-	
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="6*"/>

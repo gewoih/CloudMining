@@ -11,9 +11,10 @@ namespace CloudMining.Views.Windows
 	/// </summary>
 	public partial class NewMemberForm : Window
 	{
-		public NewMemberForm()
+		public NewMemberForm(MembersView membersVM)
 		{
 			InitializeComponent();
+			this.DataContext = membersVM;
 		}
 	}
 }

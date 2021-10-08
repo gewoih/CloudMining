@@ -14,7 +14,7 @@
 	</UserControl.DataContext>
 
 	<Grid>
-		<DataGrid ItemsSource="{Binding MembersList}" IsReadOnly="True" AutoGenerateColumns="False">
+		<DataGrid ItemsSource="{Binding MembersList}" SelectedItem="{Binding SelectedMember}" IsReadOnly="True" AutoGenerateColumns="False">
 			<DataGrid.ContextMenu>
 				<ContextMenu>
 					<MenuItem Header="Добавить участника" Command="{Binding AddNewMemberCommand}"/>
