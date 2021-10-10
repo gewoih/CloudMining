@@ -1,4 +1,5 @@
 ﻿using CloudMining.Infrastructure.Commands;
+using CloudMining.Models;
 using CloudMining.Views;
 using System;
 using System.Windows;
@@ -6,30 +7,9 @@ using System.Windows.Input;
 
 namespace CloudMining.ViewModels
 {
-	internal class MainWindowViewModel : BaseViewModel
+	public class MainWindowViewModel : BaseViewModel
 	{
 		#region Properties
-		private MembersViewModel _membersVM = new MembersViewModel();
-		public MembersViewModel MembersVM
-		{
-			get => _membersVM;
-			set => Set(ref _membersVM, value);
-		}
-
-		private DevicesViewModel _devicesVM = new DevicesViewModel();
-		public DevicesViewModel DevicesVM
-		{
-			get => _devicesVM;
-			set => Set(ref _devicesVM, value);
-		}
-
-		private DepositsViewModel _depositsVM = new DepositsViewModel();
-		public DepositsViewModel DepositsVM
-		{
-			get => _depositsVM;
-			set => Set(ref _depositsVM, value);
-		}
-
 		private int _menuIndex = 0;
 		public int MenuIndex
 		{
@@ -64,13 +44,13 @@ namespace CloudMining.ViewModels
 			switch (MenuIndex)
 			{
 				case 1:
-					MainContentControl = MembersVM;
+					MainContentControl = new MembersViewModel();
 					break;
 				case 2:
-					MainContentControl = DevicesVM;
+					//MainContentControl = DevicesVM;
 					break;
 				case 3:
-					MainContentControl = DepositsVM;
+					//MainContentControl = DepositsVM;
 					break;
 			}
 		}

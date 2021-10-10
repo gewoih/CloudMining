@@ -2,7 +2,7 @@
 
 namespace CloudMining.Models.Base
 {
-	internal abstract class NamedEntity : Entity
+	public abstract class NamedEntity : Entity
 	{
 		[Required]
 		public string Name { get; set; }

@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CloudMining.Migrations
 {
-    [DbContext(typeof(ApplicationContext))]
+    [DbContext(typeof(BaseDataContext))]
     [Migration("20211007083957_Initial")]
     partial class Initial
     {

@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 
 namespace CloudMining.ViewModels
 {
-	internal abstract class BaseViewModel : INotifyPropertyChanged
+	public abstract class BaseViewModel : INotifyPropertyChanged
 	{
 		public event PropertyChangedEventHandler PropertyChanged;
 

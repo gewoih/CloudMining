@@ -2,7 +2,7 @@
 
 namespace CloudMining.Models
 {
-	internal class Deposit : Entity
+	public class Deposit : Entity
 	{
 		public int MemberId { get; set; }
 		public virtual Member Member { get; set; }

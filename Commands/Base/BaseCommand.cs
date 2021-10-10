@@ -3,7 +3,7 @@ using System.Windows.Input;
 
 namespace CloudMining.Infrastructure.Commands.Base
 {
-	internal abstract class BaseCommand : ICommand
+	public abstract class BaseCommand : ICommand
 	{
 		public event EventHandler CanExecuteChanged
 		{

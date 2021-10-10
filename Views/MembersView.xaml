@@ -14,11 +14,11 @@
 	</UserControl.DataContext>
 
 	<Grid>
-		<DataGrid ItemsSource="{Binding MembersList}" SelectedItem="{Binding SelectedMember}" IsReadOnly="True" AutoGenerateColumns="False">
+		<DataGrid ItemsSource="{Binding Members}" SelectedItem="{Binding SelectedMember}" IsReadOnly="True" AutoGenerateColumns="False">
 			<DataGrid.ContextMenu>
 				<ContextMenu>
 					<MenuItem Header="Добавить участника" Command="{Binding AddNewMemberCommand}"/>
-					<MenuItem Header="Удалить участника" Command="{Binding DeleteMemberCommand}"/>
+					<MenuItem Header="Удалить участника" Command="{Binding RemoveMemberCommand}"/>
 				</ContextMenu>
 			</DataGrid.ContextMenu>
 

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CloudMining.Migrations
 {
-    [DbContext(typeof(ApplicationContext))]
+    [DbContext(typeof(BaseDataContext))]
     partial class ApplicationContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

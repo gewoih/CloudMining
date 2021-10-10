@@ -2,132 +2,79 @@
 using CloudMining.Models;
 using CloudMining.Views.Windows;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Windows.Input;
-using CloudMining.Data;
-using Microsoft.EntityFrameworkCore;
-using System.Linq;
+using System.Windows.Forms;
+using CloudMining.Models.DataWorkers;
 
 namespace CloudMining.ViewModels
 {
-	internal class MembersViewModel : BaseViewModel
+	public class MembersViewModel : BaseViewModel
 	{
 		#region Constructor
 		public MembersViewModel()
 		{
+			dataWorker = new MembersDataWorker();
+			Members = new ObservableCollection<Member>(dataWorker.GetAll());
+
 			AddNewMemberCommand = new RelayCommand(OnAddNewMemberCommandExecuted, CanAddNewMemberCommandExecute);
-			DeleteMemberCommand = new RelayCommand(OnDeleteMemberCommandExecuted, CanDeleteMemberCommandExecute);
+			RemoveMemberCommand = new RelayCommand(OnRemoveMemberCommandExecuted, CanRemoveMemberCommandExecute);
 		}
 		#endregion
 
 		#region Properties
-		//Список моделей Member для их отображения в MembersView
-		private ObservableCollection<Member>  _membersList;
-		public ObservableCollection<Member> MembersList
-		{
-			get
-			{
-				if (_membersList == null)
-					this.LoadMembersAsync();
-				return _membersList;
-			}
-		}
+		private readonly MembersDataWorker dataWorker;
 
+		//Список моделей Member для их отображения в MembersView
+		private ObservableCollection<Member>  _Members;
+		public ObservableCollection<Member> Members
+		{
+			get => _Members;
+			set => Set(ref _Members, value);
+		}
 
 		//Выделенный пользователем Member в MembersView
-		private Member _selectedMember;
+		private Member _SelectedMember;
 		public Member SelectedMember
 		{
-			get => _selectedMember;
-			set => Set(ref _selectedMember, value);
+			get => _SelectedMember;
+			set => Set(ref _SelectedMember, value);
 		}
 		#endregion
 
-
-
-
-
-		#region Database Methods
-
-		//Создание нового Member
-		private Task CreateMemberAsync(string name, Role role, string joinDate)
-		{
-			return Task.Run(() =>
-			{
-				using (Data.ApplicationContext db = new Data.ApplicationContext())
-				{
-					Member newMember = new Member
-					{
-						Name = name,
-						RoleId = role.Id,
-						JoinDate = joinDate
-					};
-					db.Members.Add(newMember);
-					db.SaveChanges();
-				}
-			});
-		}
-
-		//Загрузка существующих в базе Member
-		private Task LoadMembersAsync()
-		{
-			return Task.Run(() =>
-			{
-				using (Data.ApplicationContext db = new Data.ApplicationContext())
-				{
-					this._membersList = new ObservableCollection<Member>(db.Members.Include(m => m.Role).Include(m => m.Deposits));
-				}
-			});
-		}
-
-		//Удаление Member
-		private Task DeleteMemberAsync(Member member)
-		{
-			return Task.Run(() =>
-			{
-				using (Data.ApplicationContext db = new Data.ApplicationContext())
-				{
-					db.Members.Remove(member);
-					db.SaveChanges();
-				}
-			});
-		}
-		#endregion
-
-		#region Commands
-		//Команда для вызова формы NewMemberForm
-		#region AddNewMemberCommand
+		#region Command AddNewMemberCommand
 		public ICommand AddNewMemberCommand { get; }
 		private bool CanAddNewMemberCommandExecute(object p) => true;
 		private void OnAddNewMemberCommandExecuted(object p)
 		{
-			NewMemberForm newForm = new NewMemberForm(MembersViewModel mVM);
-			newForm.ShowDialog();
+			var newMember = new Member();
+			NewMemberForm newForm = new NewMemberForm(dataWorker, newMember);
 
-			MessageBox.Show("Участник создан!");
-		}
-		#endregion
-
-		//Удаление выделенного Member
-		#region DeleteMemberCommand
-		public ICommand DeleteMemberCommand { get; }
-		private bool CanDeleteMemberCommandExecute(object p) => true;
-		private void OnDeleteMemberCommandExecuted(object p)
-		{
-			//Диалоговое окно для подтверждения удаления Member
-			DialogResult dialogResult = MessageBox.Show($"Вы действительно хотите удалить участника {SelectedMember.Name}[{SelectedMember.Id}]?", 
-														"Подтверждение удаления участника", 
-														MessageBoxButtons.YesNo);
-
-			if (dialogResult == DialogResult.Yes)
+			if (newForm.ShowDialog() == true)
 			{
-				this.DeleteMemberAsync(SelectedMember);
-				MessageBox.Show("Участник удален.");
+				dataWorker.Create(newMember);
+				_Members.Add(newMember);
+				SelectedMember = newMember;
 			}
 		}
 		#endregion
 
+		#region Command RemoveMemberCommand
+		public ICommand RemoveMemberCommand { get; }
+		private bool CanRemoveMemberCommandExecute(object p) => SelectedMember != null;
+		private void OnRemoveMemberCommandExecuted(object p)
+		{
+			DialogResult dialogResult = MessageBox.Show($"Вы действительно хотите удалить участника {SelectedMember.Name} [{SelectedMember.Id}]?",
+														"Подтверждение удаления участника",
+														MessageBoxButtons.YesNo);
+
+			if (dialogResult == DialogResult.Yes)
+			{
+				dataWorker.Delete(SelectedMember.Id);
+				Members.Remove(SelectedMember);
+
+				MessageBox.Show("Участник удален.");
+			}
+		}
 		#endregion
 	}
 }

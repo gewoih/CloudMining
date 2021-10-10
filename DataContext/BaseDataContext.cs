@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace CloudMining.Data
 {
-	internal class ApplicationContext : DbContext
+	public class BaseDataContext : DbContext
 	{
 		public DbSet<Member> Members { get; set; }
 		public DbSet<Deposit> Deposits { get; set; }
@@ -12,7 +12,7 @@ namespace CloudMining.Data
 		public DbSet<Currency> Currencies { get; set; }
 		public DbSet<Role> Roles { get; set; }
 
-		public ApplicationContext()
+		public BaseDataContext()
 		{
 			//Database.EnsureDeleted();
 			Database.EnsureCreated();
@@ -25,8 +25,6 @@ namespace CloudMining.Data
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
-			//optionsBuilder.UseLazyLoadingProxies();
-			//optionsBuilder.EnableSensitiveDataLogging();
 			optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=CloudMiningDB;Trusted_Connection=True;");
 		}
 	}

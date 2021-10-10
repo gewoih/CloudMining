@@ -3,7 +3,7 @@ using System;
 
 namespace CloudMining.Infrastructure.Commands
 {
-	internal class RelayCommand : BaseCommand
+	public class RelayCommand : BaseCommand
 	{
         private readonly Action<object> _Execute;
         private readonly Func<object, bool> _CanExecute;

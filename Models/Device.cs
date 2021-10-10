@@ -2,7 +2,7 @@
 
 namespace CloudMining.Models
 {
-	internal class Device : NamedEntity
+	public class Device : NamedEntity
 	{
 		public string PurchaseDate { get; set; }
 		public double Hashrate { get; set; }
