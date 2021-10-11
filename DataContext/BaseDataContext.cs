@@ -1,8 +1,7 @@
 ﻿using CloudMining.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
 
-namespace CloudMining.Data
+namespace CloudMining.DataContext
 {
 	public class BaseDataContext : DbContext
 	{

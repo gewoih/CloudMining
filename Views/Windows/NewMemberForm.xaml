@@ -11,11 +11,6 @@
 		Background="#2F4166"
 		FontSize="20"
 		WindowStartupLocation="CenterScreen">
-
-	<Window.DataContext>
-		<vm:RolesViewModel/>
-	</Window.DataContext>
-	
 	<Grid>
 		<Grid.RowDefinitions>
 			<RowDefinition Height="6*"/>
@@ -39,7 +34,7 @@
 				<Label Grid.Row="2" Content="Дата вступления:" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#ACC1EA"/>
 
 				<TextBox x:Name="NameTextBox" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="#ACC1EA" Margin="10" Cursor="IBeam"/>
-				<ComboBox x:Name="RolesComboBox" Grid.Column="1" ItemsSource="{Binding Roles}" DisplayMemberPath="Name" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="#ACC1EA" Margin="10" IsReadOnly="True"/>
+				<ComboBox x:Name="RolesComboBox" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="#ACC1EA" Margin="10" IsReadOnly="True"/>
 				<DatePicker x:Name="JoinDatePicker" Grid.Column="1" Grid.Row="2" Margin="10"/>
 			</Grid>
 		</DockPanel>

@@ -4,7 +4,8 @@ using CloudMining.Views.Windows;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.Windows.Forms;
-using CloudMining.Models.DataWorkers;
+using CloudMining.Models.Repositories.Base;
+using CloudMining.DataContext;
 
 namespace CloudMining.ViewModels
 {
@@ -13,8 +14,9 @@ namespace CloudMining.ViewModels
 		#region Constructor
 		public MembersViewModel()
 		{
-			dataWorker = new MembersDataWorker();
-			Members = new ObservableCollection<Member>(dataWorker.GetAll());
+			this._MembersRepository = new MembersRepository(new BaseDataContext());
+
+			this.Members = new ObservableCollection<Member>(_MembersRepository.GetAll());
 
 			AddNewMemberCommand = new RelayCommand(OnAddNewMemberCommandExecuted, CanAddNewMemberCommandExecute);
 			RemoveMemberCommand = new RelayCommand(OnRemoveMemberCommandExecuted, CanRemoveMemberCommandExecute);
@@ -22,7 +24,7 @@ namespace CloudMining.ViewModels
 		#endregion
 
 		#region Properties
-		private readonly MembersDataWorker dataWorker;
+		private readonly IRepository<Member> _MembersRepository;
 
 		//Список моделей Member для их отображения в MembersView
 		private ObservableCollection<Member>  _Members;
@@ -47,11 +49,11 @@ namespace CloudMining.ViewModels
 		private void OnAddNewMemberCommandExecuted(object p)
 		{
 			var newMember = new Member();
-			NewMemberForm newForm = new NewMemberForm(dataWorker, newMember);
+			NewMemberForm newForm = new NewMemberForm(newMember);
 
 			if (newForm.ShowDialog() == true)
 			{
-				dataWorker.Create(newMember);
+				this._MembersRepository.Create(newMember);
 				_Members.Add(newMember);
 				SelectedMember = newMember;
 			}
@@ -69,7 +71,7 @@ namespace CloudMining.ViewModels
 
 			if (dialogResult == DialogResult.Yes)
 			{
-				dataWorker.Delete(SelectedMember.Id);
+				this._MembersRepository.Delete(SelectedMember.Id);
 				Members.Remove(SelectedMember);
 
 				MessageBox.Show("Участник удален.");

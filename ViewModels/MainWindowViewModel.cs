@@ -1,5 +1,7 @@
-﻿using CloudMining.Infrastructure.Commands;
+﻿using CloudMining.DataContext;
+using CloudMining.Infrastructure.Commands;
 using CloudMining.Models;
+using CloudMining.Models.Repositories.Base;
 using CloudMining.Views;
 using System;
 using System.Windows;

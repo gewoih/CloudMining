@@ -5,7 +5,7 @@
 			 xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 			 xmlns:vm="clr-namespace:CloudMining.ViewModels"
 			 xmlns:local="clr-namespace:CloudMining.Views"
-			 xmlns:c="clr-namespace:CloudMining.Data"
+			 xmlns:c="clr-namespace:CloudMining.DataContext"
 			 mc:Ignorable="d" 
 			 d:DesignHeight="450" d:DesignWidth="800">
 
