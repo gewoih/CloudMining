@@ -1,9 +1,7 @@
 ﻿using CloudMining.DataContext;
-using CloudMining.Infrastructure.Commands;
 using CloudMining.Models;
 using CloudMining.Models.Repositories.Base;
 using System.Collections.ObjectModel;
-using System.Windows.Input;
 
 namespace CloudMining.ViewModels
 {

@@ -26,7 +26,6 @@ namespace CloudMining.ViewModels
 		#region Properties
 		private readonly IRepository<Member> _MembersRepository;
 
-		//Список моделей Member для их отображения в MembersView
 		private ObservableCollection<Member>  _Members;
 		public ObservableCollection<Member> Members
 		{
@@ -34,7 +33,6 @@ namespace CloudMining.ViewModels
 			set => Set(ref _Members, value);
 		}
 
-		//Выделенный пользователем Member в MembersView
 		private Member _SelectedMember;
 		public Member SelectedMember
 		{

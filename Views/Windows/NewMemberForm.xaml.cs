@@ -15,7 +15,7 @@ namespace CloudMining.Views.Windows
 	/// </summary>
 	public partial class NewMemberForm : Window
 	{
-		private Member NewMember;
+		private readonly Member NewMember;
 		private readonly List<Role> _Roles;
 
 		public NewMemberForm(Member newMember)

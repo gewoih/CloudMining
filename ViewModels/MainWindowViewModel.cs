@@ -1,10 +1,5 @@
-﻿using CloudMining.DataContext;
-using CloudMining.Infrastructure.Commands;
-using CloudMining.Models;
-using CloudMining.Models.Repositories.Base;
-using CloudMining.Views;
+﻿using CloudMining.Infrastructure.Commands;
 using System;
-using System.Windows;
 using System.Windows.Input;
 
 namespace CloudMining.ViewModels
@@ -49,7 +44,7 @@ namespace CloudMining.ViewModels
 					MainContentControl = new MembersViewModel();
 					break;
 				case 2:
-					//MainContentControl = DevicesVM;
+					MainContentControl = new DevicesViewModel();
 					break;
 				case 3:
 					//MainContentControl = DepositsVM;

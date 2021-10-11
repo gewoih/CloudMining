@@ -7,7 +7,28 @@
 			 xmlns:vm="clr-namespace:CloudMining.ViewModels"
 			 mc:Ignorable="d" 
 			 d:DesignHeight="450" d:DesignWidth="800">
+
+	<UserControl.DataContext>
+		<vm:DevicesViewModel/>
+	</UserControl.DataContext>
+	
 	<Grid>
-		<DataGrid ItemsSource="{Binding DevicesList}" IsReadOnly="True"/>
+		<DataGrid ItemsSource="{Binding Devices}" SelectedItem="{Binding SelectedDevice}" IsReadOnly="True" AutoGenerateColumns="False">
+			<DataGrid.ContextMenu>
+				<ContextMenu>
+					<MenuItem Header="Добавить устройство" Command="{Binding AddNewDeviceCommand}"/>
+					<MenuItem Header="Удалить устройство" Command="{Binding RemoveDeviceCommand}"/>
+				</ContextMenu>
+			</DataGrid.ContextMenu>
+			
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="id" Binding="{Binding Id}"/>
+				<DataGridTextColumn Header="Модель" Binding="{Binding Name}"/>
+				<DataGridTextColumn Header="Монета" Binding="{Binding Currency.ShortName}"/>
+				<DataGridTextColumn Header="Мощность" Binding="{Binding Hashrate}"/>
+				<DataGridTextColumn Header="Потребление" Binding="{Binding Consumption}"/>
+				<DataGridTextColumn Header="Куплено" Binding="{Binding PurchaseDate}"/>
+			</DataGrid.Columns>
+		</DataGrid>
 	</Grid>
 </UserControl>

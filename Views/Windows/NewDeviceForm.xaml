@@ -1,0 +1,58 @@
+﻿<Window x:Class="CloudMining.Views.Windows.NewDeviceForm"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CloudMining.Views.Windows"
+             mc:Ignorable="d" 
+			 Title="Добавление нового устройства" 
+			 Height="500" Width="700"
+			 Background="#2F4166"
+			 FontSize="20"
+			 WindowStartupLocation="CenterScreen">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition Height="6*"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<DockPanel Margin="40">
+			<Grid>
+				<Grid.RowDefinitions>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+					<RowDefinition/>
+				</Grid.RowDefinitions>
+				<Grid.ColumnDefinitions>
+					<ColumnDefinition/>
+					<ColumnDefinition/>
+				</Grid.ColumnDefinitions>
+
+				<Label Content="Название модели:" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#ACC1EA"/>
+				<Label Grid.Row="1" Content="Монета:" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#ACC1EA"/>
+				<Label Grid.Row="2" Content="Мощность:" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#ACC1EA"/>
+				<Label Grid.Row="3" Content="Потребление:" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#ACC1EA"/>
+				<Label Grid.Row="4" Content="Дата покупки:" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#ACC1EA"/>
+
+				<TextBox x:Name="NameTextBox" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="#ACC1EA" Margin="10" Cursor="IBeam"/>
+				<ComboBox x:Name="CurrenciesComboBox" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="#ACC1EA" Margin="10" IsReadOnly="True"/>
+				<TextBox x:Name="HashrateTextBox" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="#ACC1EA" Margin="10" Cursor="IBeam"/>
+				<TextBox x:Name="ConsumptionTextBox" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="#ACC1EA" Margin="10" Cursor="IBeam"/>
+				<DatePicker x:Name="PurchaseDatePicker" Grid.Column="1" Grid.Row="4" Margin="10"/>
+			</Grid>
+		</DockPanel>
+
+		<Button x:Name="AddDeviceButton" 
+				Grid.Row="1" 
+				Content="Добавить устройство" 
+				Foreground="#ACC1EA" 
+				Height="Auto" 
+				Background="#031C4E" 
+				BorderThickness="0" 
+				Cursor="Hand" 
+				FontSize="20"
+				IsDefault="True" Click="AddDeviceButton_Click"/>
+	</Grid>
+</Window>
