@@ -7,7 +7,26 @@
 			 xmlns:vm="clr-namespace:CloudMining.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+	<UserControl.DataContext>
+		<vm:DepositsViewModel/>
+	</UserControl.DataContext>
+
 	<Grid>
-		<DataGrid ItemsSource="{Binding DepositsList}" IsReadOnly="True"/>
+		<DataGrid ItemsSource="{Binding Deposits}" SelectedItem="{Binding SelectedDeposit}" IsReadOnly="True" AutoGenerateColumns="False">
+			<DataGrid.ContextMenu>
+				<ContextMenu>
+					<MenuItem Header="Добавить депозит" Command="{Binding AddNewDepositCommand}"/>
+					<MenuItem Header="Удалить депозит" Command="{Binding RemoveDepositCommand}"/>
+				</ContextMenu>
+			</DataGrid.ContextMenu>
+
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="id" Binding="{Binding Id}"/>
+				<DataGridTextColumn Header="От кого" Binding="{Binding Member.Name}"/>
+				<DataGridTextColumn Header="Сумма" Binding="{Binding Amount, StringFormat=\{0\}р.}"/>
+				<DataGridTextColumn Header="Дата" Binding="{Binding Date}"/>
+				<DataGridTextColumn Header="Комментарий" Binding="{Binding Comment}"/>
+			</DataGrid.Columns>
+		</DataGrid>
 	</Grid>
 </UserControl>

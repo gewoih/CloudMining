@@ -47,7 +47,7 @@ namespace CloudMining.ViewModels
 					MainContentControl = new DevicesViewModel();
 					break;
 				case 3:
-					//MainContentControl = DepositsVM;
+					MainContentControl = new DepositsViewModel();
 					break;
 			}
 		}

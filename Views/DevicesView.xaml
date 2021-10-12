@@ -26,7 +26,7 @@
 				<DataGridTextColumn Header="Модель" Binding="{Binding Name}"/>
 				<DataGridTextColumn Header="Монета" Binding="{Binding Currency.ShortName}"/>
 				<DataGridTextColumn Header="Мощность" Binding="{Binding Hashrate}"/>
-				<DataGridTextColumn Header="Потребление" Binding="{Binding Consumption}"/>
+				<DataGridTextColumn Header="Потребление" Binding="{Binding Consumption, StringFormat=\{0\} Вт.}"/>
 				<DataGridTextColumn Header="Куплено" Binding="{Binding PurchaseDate}"/>
 			</DataGrid.Columns>
 		</DataGrid>

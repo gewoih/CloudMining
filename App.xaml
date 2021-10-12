@@ -20,6 +20,10 @@
 			<DataTemplate DataType="{x:Type vm:DevicesViewModel}">
 				<view:DevicesView/>
 			</DataTemplate>
+
+			<DataTemplate DataType="{x:Type vm:DepositsViewModel}">
+				<view:DepositsView/>
+			</DataTemplate>
 		</ResourceDictionary>
 	</Application.Resources>
 </Application>
