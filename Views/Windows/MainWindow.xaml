@@ -35,28 +35,58 @@
 				</ListViewItem.InputBindings>
 
 				<StackPanel Orientation="Horizontal">
-					<Image Source="\Resources/member.png" Width="50"/>
-					<TextBlock Text="Участники" VerticalAlignment="Center"/>
+					<Image Source="\Resources/statistics.png" Width="50"/>
+					<TextBlock Text="Статистика проекта" VerticalAlignment="Center"/>
 				</StackPanel>
 			</ListViewItem>
+			
 			<ListViewItem Foreground="#ACC1EA">
 				<ListViewItem.InputBindings>
 					<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="2"/>
 				</ListViewItem.InputBindings>
-
 				<StackPanel Orientation="Horizontal">
-					<Image Source="\Resources/device.png" Width="50"/>
-					<TextBlock Text="Оборудование" VerticalAlignment="Center"/>
+					<Image Source="\Resources/member.png" Width="50"/>
+					<TextBlock Text="Участники" VerticalAlignment="Center"/>
 				</StackPanel>
 			</ListViewItem>
+
 			<ListViewItem Foreground="#ACC1EA">
 				<ListViewItem.InputBindings>
 					<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="3"/>
 				</ListViewItem.InputBindings>
+				<StackPanel Orientation="Horizontal">
+					<Image Source="\Resources/payouts.png" Width="50"/>
+					<TextBlock Text="Выплаты" VerticalAlignment="Center"/>
+				</StackPanel>
+			</ListViewItem>
 
+			<ListViewItem Foreground="#ACC1EA">
+				<ListViewItem.InputBindings>
+					<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="4"/>
+				</ListViewItem.InputBindings>
 				<StackPanel Orientation="Horizontal">
 					<Image Source="\Resources/deposit.png" Width="50"/>
 					<TextBlock Text="Пополнения" VerticalAlignment="Center"/>
+				</StackPanel>
+			</ListViewItem>
+
+			<ListViewItem Foreground="#ACC1EA">
+				<ListViewItem.InputBindings>
+					<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="6"/>
+				</ListViewItem.InputBindings>
+				<StackPanel Orientation="Horizontal">
+					<Image Source="\Resources/expense.png" Width="50"/>
+					<TextBlock Text="Расходы" VerticalAlignment="Center"/>
+				</StackPanel>
+			</ListViewItem>
+
+			<ListViewItem Foreground="#ACC1EA">
+				<ListViewItem.InputBindings>
+					<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="5"/>
+				</ListViewItem.InputBindings>
+				<StackPanel Orientation="Horizontal">
+					<Image Source="\Resources/device.png" Width="50"/>
+					<TextBlock Text="Оборудование" VerticalAlignment="Center"/>
 				</StackPanel>
 			</ListViewItem>
 		</ListView>
