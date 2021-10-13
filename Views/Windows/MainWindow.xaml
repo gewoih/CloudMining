@@ -72,17 +72,17 @@
 
 			<ListViewItem Foreground="#ACC1EA">
 				<ListViewItem.InputBindings>
-					<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="6"/>
+					<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="5"/>
 				</ListViewItem.InputBindings>
 				<StackPanel Orientation="Horizontal">
 					<Image Source="\Resources/expense.png" Width="50"/>
-					<TextBlock Text="Расходы" VerticalAlignment="Center"/>
+					<TextBlock Text="Покупки" VerticalAlignment="Center"/>
 				</StackPanel>
 			</ListViewItem>
 
 			<ListViewItem Foreground="#ACC1EA">
 				<ListViewItem.InputBindings>
-					<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="5"/>
+					<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="6"/>
 				</ListViewItem.InputBindings>
 				<StackPanel Orientation="Horizontal">
 					<Image Source="\Resources/device.png" Width="50"/>

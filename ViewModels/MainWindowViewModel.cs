@@ -41,7 +41,7 @@ namespace CloudMining.ViewModels
 			switch (MenuIndex)
 			{
 				case 1:
-					//MainContentControl = new MembersViewModel();
+					//MainContentControl = new StatisticsViewModel();
 					break;
 				case 2:
 					MainContentControl = new MembersViewModel();
@@ -53,6 +53,9 @@ namespace CloudMining.ViewModels
 					MainContentControl = new DepositsViewModel();
 					break;
 				case 5:
+					MainContentControl = new PurchasesViewModel();
+					break;
+				case 6:
 					MainContentControl = new DevicesViewModel();
 					break;
 			}

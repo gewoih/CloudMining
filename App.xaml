@@ -24,6 +24,10 @@
 			<DataTemplate DataType="{x:Type vm:DepositsViewModel}">
 				<view:DepositsView/>
 			</DataTemplate>
+
+			<DataTemplate DataType="{x:Type vm:PurchasesViewModel}">
+				<view:PurchasesView/>
+			</DataTemplate>
 		</ResourceDictionary>
 	</Application.Resources>
 </Application>

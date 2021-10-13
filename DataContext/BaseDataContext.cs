@@ -10,6 +10,7 @@ namespace CloudMining.DataContext
 		public DbSet<Device> Devices { get; set; }
 		public DbSet<Currency> Currencies { get; set; }
 		public DbSet<Role> Roles { get; set; }
+		public DbSet<Purchase> Purchases { get; set; }
 
 		public BaseDataContext()
 		{
@@ -49,6 +50,12 @@ namespace CloudMining.DataContext
 			var dep5 = new Deposit { Member = m5, Amount = 244780, Date = "12.10.2021" };
 			var dep6 = new Deposit { Member = m6, Amount = 133821, Date = "12.10.2021" };
 			Deposits.AddRange(dep1, dep2, dep3, dep4, dep5, dep6);
+
+			var p1 = new Purchase { Date = "24.04.2001", Amount = 2300, Subject = "Строительные материалы" };
+			var p2 = new Purchase { Date = "24.04.2001", Amount = 300000, Subject = "Whatsminer M20S" };
+			var p3 = new Purchase { Date = "24.04.2001", Amount = 9500, Subject = "Вытяжка для домика" };
+			var p4 = new Purchase { Date = "24.04.2001", Amount = 6200, Subject = "Стеллаж для майнеров" };
+			Purchases.AddRange(p1, p2, p3, p4);
 
 			SaveChanges();*/
 		}
