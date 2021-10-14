@@ -39,20 +39,20 @@ namespace CloudMining.Models.Repositories
 				{
 					if (!this.GetAll().ToList().Exists(p => p.TxId == payout.txid))
 					{
-						this.Create(new Payout 
-									{ 
-										TxId = payout.txid, 
-										Amount = payout.amount, 
-										Currency = c, 
-										Timestamp = payout.timestamp 
-									});
+						CalculateShares(this.Create(new Payout 
+														{ 
+															TxId = payout.txid, 
+															Amount = payout.amount, 
+															Currency = c, 
+															Timestamp = payout.timestamp 
+														}));
 
 						newPayoutsCount++;
 					}
 				}
 			}
 			if (!newPayoutsCount.Equals(0))
-				MessageBox.Show($"Найдено {newPayoutsCount} новых выплат.");
+				MessageBox.Show($"Загружено {newPayoutsCount} новых выплат.");
 		}
 
 		private List<ApiPayout> GetApiPayouts(Currency currency)
@@ -65,6 +65,24 @@ namespace CloudMining.Models.Repositories
 			JToken payouts = json["payouts"];
 
 			return payouts.ToObject<List<ApiPayout>>();
+		}
+
+		private void CalculateShares(Payout newPayout)
+		{
+			List<Member> Members = new MembersRepository(new BaseDataContext()).GetAll().ToList();
+			IRepository<PayoutShare> PayoutSharesRepository = new PayoutSharesRepository(new BaseDataContext());
+
+			foreach (var member in Members)
+			{
+				PayoutSharesRepository.Create(
+				new PayoutShare 
+				{ 
+					Member = member, 
+					Percent = member.Share, 
+					Amount = newPayout.Amount * member.Role.Fee + (newPayout.Amount - (newPayout.Amount * Members.Sum(m => m.Role.Fee))) * member.Share,
+					Payout = newPayout
+				});
+			}
 		}
 	}
 

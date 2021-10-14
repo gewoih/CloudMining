@@ -34,60 +34,71 @@
 					<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="1"/>
 				</ListViewItem.InputBindings>
 
-				<StackPanel Orientation="Horizontal">
+				<DockPanel>
 					<Image Source="\Resources/statistics.png" Width="50"/>
 					<TextBlock Text="Статистика проекта" VerticalAlignment="Center"/>
-				</StackPanel>
+				</DockPanel>
 			</ListViewItem>
 			
 			<ListViewItem Foreground="#ACC1EA">
 				<ListViewItem.InputBindings>
 					<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="2"/>
 				</ListViewItem.InputBindings>
-				<StackPanel Orientation="Horizontal">
+				<DockPanel>
 					<Image Source="\Resources/member.png" Width="50"/>
 					<TextBlock Text="Участники" VerticalAlignment="Center"/>
-				</StackPanel>
+				</DockPanel>
 			</ListViewItem>
 
 			<ListViewItem Foreground="#ACC1EA">
 				<ListViewItem.InputBindings>
 					<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="3"/>
 				</ListViewItem.InputBindings>
-				<StackPanel Orientation="Horizontal">
+				<DockPanel>
 					<Image Source="\Resources/payouts.png" Width="50"/>
 					<TextBlock Text="Выплаты" VerticalAlignment="Center"/>
-				</StackPanel>
+				</DockPanel>
 			</ListViewItem>
 
 			<ListViewItem Foreground="#ACC1EA">
 				<ListViewItem.InputBindings>
 					<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="4"/>
 				</ListViewItem.InputBindings>
-				<StackPanel Orientation="Horizontal">
+				<DockPanel>
 					<Image Source="\Resources/deposit.png" Width="50"/>
 					<TextBlock Text="Пополнения" VerticalAlignment="Center"/>
-				</StackPanel>
+				</DockPanel>
 			</ListViewItem>
 
 			<ListViewItem Foreground="#ACC1EA">
 				<ListViewItem.InputBindings>
 					<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="5"/>
 				</ListViewItem.InputBindings>
-				<StackPanel Orientation="Horizontal">
+				<DockPanel>
 					<Image Source="\Resources/expense.png" Width="50"/>
 					<TextBlock Text="Покупки" VerticalAlignment="Center"/>
-				</StackPanel>
+				</DockPanel>
 			</ListViewItem>
 
 			<ListViewItem Foreground="#ACC1EA">
 				<ListViewItem.InputBindings>
 					<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="6"/>
 				</ListViewItem.InputBindings>
-				<StackPanel Orientation="Horizontal">
+				<DockPanel>
 					<Image Source="\Resources/device.png" Width="50"/>
 					<TextBlock Text="Оборудование" VerticalAlignment="Center"/>
-				</StackPanel>
+				</DockPanel>
+			</ListViewItem>
+
+			<ListViewItem Foreground="#ACC1EA" HorizontalContentAlignment="Stretch">
+				<ListViewItem.InputBindings>
+					<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="7"/>
+				</ListViewItem.InputBindings>
+				<DockPanel>
+					<Image Source="\Resources/notification.png" Width="50"/>
+					<TextBlock Text="Уведомления" VerticalAlignment="Center"/>
+					<TextBlock Text="{Binding UnpaidPayouts}" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="24" FontWeight="Bold" Foreground="#B867EB" Margin="20, 0"/>
+				</DockPanel>
 			</ListViewItem>
 		</ListView>
 

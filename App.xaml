@@ -32,6 +32,10 @@
 			<DataTemplate DataType="{x:Type vm:PayoutsViewModel}">
 				<view:PayoutsView/>
 			</DataTemplate>
+
+			<DataTemplate DataType="{x:Type vm:PayoutSharesViewModel}">
+				<view:PayoutSharesView/>
+			</DataTemplate>
 		</ResourceDictionary>
 	</Application.Resources>
 </Application>

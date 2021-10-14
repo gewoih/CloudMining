@@ -13,6 +13,7 @@
     <None Remove="member.png" />
     <None Remove="Resources\deposit.png" />
     <None Remove="Resources\expense.png" />
+    <None Remove="Resources\notification.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,6 +40,9 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\member.png">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resources\notification.png">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resources\payouts.png">

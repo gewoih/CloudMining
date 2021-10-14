@@ -12,6 +12,8 @@ namespace CloudMining.DataContext
 		public DbSet<Role> Roles { get; set; }
 		public DbSet<Purchase> Purchases { get; set; }
 		public DbSet<Payout> Payouts { get; set; }
+		public DbSet<PayoutShare> PayoutShares { get; set; }
+		public DbSet<Status> Statuses { get; set; }
 
 		public BaseDataContext()
 		{
@@ -19,8 +21,8 @@ namespace CloudMining.DataContext
 			Database.EnsureCreated();
 
 			var r1 = new Role { Name = "Участник", Fee = 0 };
-			var r2 = new Role { Name = "Администратор", Fee = 3 };
-			var r3 = new Role { Name = "Менеджер", Fee = 5 };
+			var r2 = new Role { Name = "Администратор", Fee = 0.03 };
+			var r3 = new Role { Name = "Менеджер", Fee = 0.05 };
 			Roles.AddRange(r1, r2, r3);
 
 			var c1 = new Currency { Name = "Bitcoin", ShortName = "BTC" };
@@ -57,6 +59,10 @@ namespace CloudMining.DataContext
 			var p3 = new Purchase { Date = "24.04.2001", Amount = 9500, Subject = "Вытяжка для домика" };
 			var p4 = new Purchase { Date = "24.04.2001", Amount = 6200, Subject = "Стеллаж для майнеров" };
 			Purchases.AddRange(p1, p2, p3, p4);
+
+			var s1 = new Status { Name = "Новый" };
+			var s2 = new Status { Name = "Завершено" };
+			Statuses.AddRange(s1, s2);
 
 			SaveChanges();*/
 		}

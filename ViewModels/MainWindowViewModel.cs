@@ -14,6 +14,13 @@ namespace CloudMining.ViewModels
 			set => Set(ref _menuIndex, value);
 		}
 
+		private int _unpaidPayouts;
+		public int UnpaidPayouts
+		{
+			get => _unpaidPayouts;
+			set => Set(ref _unpaidPayouts, value);
+		}
+
 		private object _mainContentControl = new MembersViewModel();
 		public object MainContentControl
 		{
@@ -57,6 +64,9 @@ namespace CloudMining.ViewModels
 					break;
 				case 6:
 					MainContentControl = new DevicesViewModel();
+					break;
+				case 7:
+					MainContentControl = new PayoutSharesViewModel();
 					break;
 			}
 		}

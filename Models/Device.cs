@@ -6,8 +6,7 @@ namespace CloudMining.Models
 	{
 		public string PurchaseDate { get; set; }
 		public double Hashrate { get; set; }
-		public int CurrencyId { get; set; }
-		public virtual Currency Currency { get; set; }
+		public Currency Currency { get; set; }
 		public int Consumption { get; set; }
 	}
 }

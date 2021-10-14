@@ -6,6 +6,6 @@ namespace CloudMining.Models
 	public class Role : NamedEntity
 	{
 		public double Fee { get; set; }
-		public virtual List<Member> Members { get; set; }
+		public List<Member> Members { get; set; }
 	}
 }
