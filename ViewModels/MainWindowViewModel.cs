@@ -47,7 +47,7 @@ namespace CloudMining.ViewModels
 					MainContentControl = new MembersViewModel();
 					break;
 				case 3:
-					//MainContentControl = new PayoytsViewModel();
+					MainContentControl = new PayoutsViewModel();
 					break;
 				case 4:
 					MainContentControl = new DepositsViewModel();

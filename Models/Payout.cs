@@ -1,5 +1,7 @@
 ﻿using CloudMining.Models.Base;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace CloudMining.Models
 {
@@ -10,6 +12,9 @@ namespace CloudMining.Models
 		public double Amount { get; set; }
 		public int CurrencyId { get; set; }
 		public virtual Currency Currency { get; set; }
-		public Dictionary<Member, double> Shares { get; set; }
+		public virtual List<PayoutShares> Shares { get; set; }
+
+		[NotMapped]
+		public string Date => new DateTime(1970, 1, 1, 0, 0, 0, 0).AddSeconds(this.Timestamp).ToLocalTime().ToString("dd.MM.yyyy HH:mm");
 	}
 }
