@@ -6,6 +6,7 @@ namespace CloudMining.Models
 	public class Currency : NamedEntity
 	{
 		public string ShortName { get; set; }
+		public int Precision { get; set; }
 		public List<Device> Devices { get; set; }
 	}
 }

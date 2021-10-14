@@ -25,10 +25,10 @@ namespace CloudMining.DataContext
 			var r3 = new Role { Name = "Менеджер", Fee = 0.05 };
 			Roles.AddRange(r1, r2, r3);
 
-			var c1 = new Currency { Name = "Bitcoin", ShortName = "BTC" };
-			var c2 = new Currency { Name = "Ethereum", ShortName = "ETH" };
-			var c3 = new Currency { Name = "Litecoin", ShortName = "LTC" };
-			var c4 = new Currency { Name = "Dogecoin", ShortName = "DOGE" };
+			var c1 = new Currency { Name = "Bitcoin", ShortName = "BTC", Precision = 4 };
+			var c2 = new Currency { Name = "Ethereum", ShortName = "ETH", Precision = 4 };
+			var c3 = new Currency { Name = "Litecoin", ShortName = "LTC", Precision = 0 };
+			var c4 = new Currency { Name = "Dogecoin", ShortName = "DOGE", Precision = 0 };
 			Currencies.AddRange(c1, c2, c3, c4);
 
 			var m1 = new Member { Name = "Никита Раненко", JoinDate = "24.04.2001", Role = r3 };

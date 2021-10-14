@@ -14,7 +14,7 @@ namespace CloudMining.Models.Repositories
 
 		public override IQueryable<PayoutShare> GetAll()
 		{
-			return base.GetAll().Include(item => item.Member).Include(item => item.Payout).Include(item => item.Status);
+			return base.GetAll().Include(item => item.Member).Include(item => item.Payout.Currency).Include(item => item.Status);
 		}
 	}
 }

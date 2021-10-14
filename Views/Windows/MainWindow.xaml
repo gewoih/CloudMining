@@ -14,7 +14,7 @@
 		<vm:MainWindowViewModel/>
 	</Window.DataContext>
 
-	<Grid ShowGridLines="True">
+	<Grid>
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition Width="*"/>
 			<ColumnDefinition Width="2.5*"/>
@@ -103,7 +103,7 @@
 		</ListView>
 
 		<StackPanel Grid.Row="1" Grid.Column="1" Margin="20">
-			<ContentControl Content="{Binding MainContentControl}"/>
+			<ContentControl Content="{Binding MainContentControl}" Height="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UIElement}},Path=ActualHeight}"/>
 		</StackPanel>
 	</Grid>
 </Window>

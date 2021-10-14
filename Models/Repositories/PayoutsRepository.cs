@@ -42,7 +42,7 @@ namespace CloudMining.Models.Repositories
 						CalculateShares(this.Create(new Payout 
 														{ 
 															TxId = payout.txid, 
-															Amount = payout.amount, 
+															Amount = Math.Round(payout.amount, c.Precision, MidpointRounding.ToZero), 
 															Currency = c, 
 															Timestamp = payout.timestamp 
 														}));
@@ -79,7 +79,7 @@ namespace CloudMining.Models.Repositories
 				{ 
 					Member = member, 
 					Percent = member.Share, 
-					Amount = newPayout.Amount * member.Role.Fee + (newPayout.Amount - (newPayout.Amount * Members.Sum(m => m.Role.Fee))) * member.Share,
+					Amount = Math.Round(newPayout.Amount * member.Role.Fee + (newPayout.Amount - (newPayout.Amount * Members.Sum(m => m.Role.Fee))) * member.Share, newPayout.Currency.Precision, MidpointRounding.ToZero),
 					Payout = newPayout
 				});
 			}
