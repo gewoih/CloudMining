@@ -103,7 +103,7 @@
 		</ListView>
 
 		<StackPanel Grid.Row="1" Grid.Column="1" Margin="20">
-			<ContentControl Content="{Binding MainContentControl}" Height="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UIElement}},Path=ActualHeight}"/>
+			<ContentControl Content="{Binding MainContentControl}" MaxHeight="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UIElement}},Path=ActualHeight}"/>
 		</StackPanel>
 	</Grid>
 </Window>
