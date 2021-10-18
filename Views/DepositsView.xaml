@@ -12,7 +12,7 @@
 	</UserControl.DataContext>
 
 	<Grid>
-		<DataGrid ItemsSource="{Binding Deposits}" SelectedItem="{Binding SelectedDeposit}" IsReadOnly="True" AutoGenerateColumns="False">
+		<DataGrid x:Name="dataGrid" ItemsSource="{Binding Deposits}" SelectedItem="{Binding SelectedDeposit}" IsReadOnly="True" AutoGenerateColumns="False">
 			<DataGrid.ContextMenu>
 				<ContextMenu>
 					<MenuItem Header="Добавить депозит" Command="{Binding AddNewDepositCommand}"/>
@@ -24,7 +24,7 @@
 				<DataGridTextColumn Header="id" Binding="{Binding Id}"/>
 				<DataGridTextColumn Header="От кого" Binding="{Binding Member.Name}"/>
 				<DataGridTextColumn Header="Сумма" Binding="{Binding Amount, StringFormat=\{0\}р.}"/>
-				<DataGridTextColumn Header="Дата" Binding="{Binding Date}"/>
+				<DataGridTextColumn Header="Дата" Binding="{Binding Date}" SortDirection="Descending"/>
 				<DataGridTextColumn Header="Комментарий" Binding="{Binding Comment}"/>
 			</DataGrid.Columns>
 		</DataGrid>

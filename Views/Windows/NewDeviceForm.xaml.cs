@@ -33,11 +33,11 @@ namespace CloudMining.Views.Windows
 			Currency newDeviceCurrency = _Currencies.FirstOrDefault(c => c.Name == CurrenciesComboBox.Text);
 			double newDeviceHashrate = Convert.ToDouble(HashrateTextBox.Text);
 			int newDeviceConsumption = Convert.ToInt32(ConsumptionTextBox.Text);
-			string newDevicePurchaseDate = PurchaseDatePicker.Text;
+			DateTime newDevicePurchaseDate = PurchaseDatePicker.SelectedDate.Value;
 
 			if (!newDeviceName.Equals(String.Empty) && !newDeviceCurrency.Equals(null)
 				&& newDeviceHashrate > 0 && newDeviceConsumption > 0 
-				&& DateTime.Parse(newDevicePurchaseDate) <= DateTime.Now)
+				&& newDevicePurchaseDate <= DateTime.Now)
 			{
 				this.newDevice.Name = newDeviceName;
 				this.newDevice.Currency = newDeviceCurrency;

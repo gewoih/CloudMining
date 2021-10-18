@@ -34,10 +34,10 @@ namespace CloudMining.Views.Windows
 		{
 			string newPurchaseSubject = SubjectTextBox.Text;
 			double newPurchaseAmount = Convert.ToDouble(AmountTextBox.Text);
-			string newPurchaseDate = PurchaseDatePicker.Text;
+			DateTime newPurchaseDate = PurchaseDatePicker.SelectedDate.Value;
 
 			if (!newPurchaseSubject.Equals(null) && newPurchaseAmount > 0
-				&& DateTime.Parse(newPurchaseDate) <= DateTime.Now)
+				&& newPurchaseDate <= DateTime.Now)
 			{
 				this._NewPurchase.Subject = newPurchaseSubject;
 				this._NewPurchase.Amount = newPurchaseAmount;

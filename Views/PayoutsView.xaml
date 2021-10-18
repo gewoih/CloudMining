@@ -13,10 +13,10 @@
 	</UserControl.DataContext>
 
 	<Grid>
-		<DataGrid ItemsSource="{Binding Payouts}" IsReadOnly="True" AutoGenerateColumns="False">
+		<DataGrid x:Name="dataGrid" ItemsSource="{Binding Payouts}" IsReadOnly="True" AutoGenerateColumns="False">
 			<DataGrid.Columns>
 				<DataGridTextColumn Header="id" Binding="{Binding Id}"/>
-				<DataGridTextColumn Header="Дата" Binding="{Binding Date}"/>
+				<DataGridTextColumn Header="Дата" Binding="{Binding Date}" SortDirection="Descending"/>
 				<DataGridTextColumn Header="Монета" Binding="{Binding Currency.ShortName}"/>
 				<DataGridTextColumn Header="Сумма" Binding="{Binding Amount}"/>
 			</DataGrid.Columns>

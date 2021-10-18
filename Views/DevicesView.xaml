@@ -13,7 +13,7 @@
 	</UserControl.DataContext>
 	
 	<Grid>
-		<DataGrid ItemsSource="{Binding Devices}" SelectedItem="{Binding SelectedDevice}" IsReadOnly="True" AutoGenerateColumns="False">
+		<DataGrid x:Name="dataGrid" ItemsSource="{Binding Devices}" SelectedItem="{Binding SelectedDevice}" IsReadOnly="True" AutoGenerateColumns="False">
 			<DataGrid.ContextMenu>
 				<ContextMenu>
 					<MenuItem Header="Добавить устройство" Command="{Binding AddNewDeviceCommand}"/>
@@ -27,7 +27,7 @@
 				<DataGridTextColumn Header="Монета" Binding="{Binding Currency.ShortName}"/>
 				<DataGridTextColumn Header="Мощность" Binding="{Binding Hashrate}"/>
 				<DataGridTextColumn Header="Потребление" Binding="{Binding Consumption, StringFormat=\{0\} Вт.}"/>
-				<DataGridTextColumn Header="Куплено" Binding="{Binding PurchaseDate}"/>
+				<DataGridTextColumn Header="Куплено" Binding="{Binding PurchaseDate}" SortDirection="Descending"/>
 			</DataGrid.Columns>
 		</DataGrid>
 	</Grid>

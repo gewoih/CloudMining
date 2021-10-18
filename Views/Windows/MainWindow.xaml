@@ -97,13 +97,12 @@
 				<DockPanel>
 					<Image Source="\Resources/notification.png" Width="50"/>
 					<TextBlock Text="Уведомления" VerticalAlignment="Center"/>
-					<TextBlock Text="{Binding UnpaidPayouts}" VerticalAlignment="Center" HorizontalAlignment="Right" FontSize="24" FontWeight="Bold" Foreground="#B867EB" Margin="20, 0"/>
 				</DockPanel>
 			</ListViewItem>
 		</ListView>
 
 		<StackPanel Grid.Row="1" Grid.Column="1" Margin="20">
-			<ContentControl Content="{Binding MainContentControl}" Height="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UIElement}},Path=ActualHeight}"/>
+			<ContentControl Content="{Binding MainContentControl}" MaxHeight="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type UIElement}},Path=ActualHeight}"/>
 		</StackPanel>
 	</Grid>
 </Window>

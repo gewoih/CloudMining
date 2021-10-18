@@ -46,7 +46,6 @@ namespace CloudMining.Models.Repositories
 															Currency = c, 
 															Timestamp = payout.timestamp 
 														}));
-
 						newPayoutsCount++;
 					}
 				}
@@ -79,7 +78,7 @@ namespace CloudMining.Models.Repositories
 				{ 
 					Member = member, 
 					Percent = member.Share, 
-					Amount = Math.Round(newPayout.Amount * member.Role.Fee + (newPayout.Amount - (newPayout.Amount * Members.Sum(m => m.Role.Fee))) * member.Share, newPayout.Currency.Precision, MidpointRounding.ToZero),
+					Amount = Math.Round(newPayout.Amount * member.Role.Fee / 100 + (newPayout.Amount - (newPayout.Amount * Members.Sum(m => m.Role.Fee) / 100)) * member.Share / 100, newPayout.Currency.Precision, MidpointRounding.ToZero),
 					Payout = newPayout
 				});
 			}

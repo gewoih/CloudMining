@@ -14,6 +14,6 @@ namespace CloudMining.Models
 		public List<PayoutShare> Shares { get; set; }
 
 		[NotMapped]
-		public string Date => new DateTime(1970, 1, 1, 0, 0, 0, 0).AddSeconds(this.Timestamp).ToLocalTime().ToString("dd.MM.yyyy HH:mm");
+		public DateTime Date => new DateTime(1970, 1, 1, 0, 0, 0, 0).AddSeconds(this.Timestamp).ToLocalTime();
 	}
 }

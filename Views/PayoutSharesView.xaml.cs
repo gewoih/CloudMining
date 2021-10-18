@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -21,6 +22,8 @@ namespace CloudMining.Views
 		public PayoutSharesView()
 		{
 			InitializeComponent();
+
+			this.dataGrid.Items.SortDescriptions.Add(new SortDescription("Payout.Date", ListSortDirection.Descending));
 		}
 	}
 }

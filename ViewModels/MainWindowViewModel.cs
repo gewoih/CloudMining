@@ -14,13 +14,6 @@ namespace CloudMining.ViewModels
 			set => Set(ref _menuIndex, value);
 		}
 
-		private int _unpaidPayouts;
-		public int UnpaidPayouts
-		{
-			get => _unpaidPayouts;
-			set => Set(ref _unpaidPayouts, value);
-		}
-
 		private object _mainContentControl = new MembersViewModel();
 		public object MainContentControl
 		{
@@ -51,22 +44,28 @@ namespace CloudMining.ViewModels
 					//MainContentControl = new StatisticsViewModel();
 					break;
 				case 2:
-					MainContentControl = new MembersViewModel();
+					if (MainContentControl is not MembersViewModel)
+						MainContentControl = new MembersViewModel();
 					break;
 				case 3:
-					MainContentControl = new PayoutsViewModel();
+					if (MainContentControl is not PayoutsViewModel)
+						MainContentControl = new PayoutsViewModel();
 					break;
 				case 4:
-					MainContentControl = new DepositsViewModel();
+					if (MainContentControl is not DepositsViewModel)
+						MainContentControl = new DepositsViewModel();
 					break;
 				case 5:
-					MainContentControl = new PurchasesViewModel();
+					if (MainContentControl is not PurchasesViewModel)
+						MainContentControl = new PurchasesViewModel();
 					break;
 				case 6:
-					MainContentControl = new DevicesViewModel();
+					if (MainContentControl is not DevicesViewModel)
+						MainContentControl = new DevicesViewModel();
 					break;
 				case 7:
-					MainContentControl = new PayoutSharesViewModel();
+					if (MainContentControl is not PayoutSharesViewModel)
+						MainContentControl = new PayoutSharesViewModel();
 					break;
 			}
 		}

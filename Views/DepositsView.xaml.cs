@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.ComponentModel;
+using System.Windows.Controls;
 
 namespace CloudMining.Views
 {
@@ -10,6 +11,9 @@ namespace CloudMining.Views
 		public DepositsView()
 		{
 			InitializeComponent();
+
+			this.dataGrid.Items.SortDescriptions.Add(new SortDescription("Date", ListSortDirection.Descending));
+
 		}
 	}
 }

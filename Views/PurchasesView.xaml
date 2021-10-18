@@ -25,7 +25,7 @@
 				<DataGridTextColumn Header="id" Binding="{Binding Id}"/>
 				<DataGridTextColumn Header="Цель покупки" Binding="{Binding Subject}"/>
 				<DataGridTextColumn Header="Сумма" Binding="{Binding Amount, StringFormat=\{0\}р.}"/>
-				<DataGridTextColumn Header="Дата" Binding="{Binding Date}"/>
+				<DataGridTextColumn Header="Дата" Binding="{Binding Date}" SortDirection="Descending"/>
 			</DataGrid.Columns>
 		</DataGrid>
 	</Grid>

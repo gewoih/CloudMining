@@ -6,7 +6,7 @@
 			 xmlns:vm="clr-namespace:CloudMining.ViewModels"
 			 xmlns:models="clr-namespace:CloudMining.Models"
 			 xmlns:local="clr-namespace:CloudMining.Views"
-			 xmlns:c="clr-namespace:CloudMining.DataContext"
+			 xmlns:c="clr-namespace:CloudMining.DataContext" xmlns:scm="clr-namespace:System.ComponentModel;assembly=WindowsBase"
 			 mc:Ignorable="d" 
 			 d:DesignHeight="450" d:DesignWidth="800">
 
@@ -15,22 +15,20 @@
 	</UserControl.DataContext>
 
 	<Grid>
-		<DataGrid ItemsSource="{Binding Members}" SelectedItem="{Binding SelectedMember}" IsReadOnly="True" AutoGenerateColumns="False">
+		<DataGrid x:Name="dataGrid" ItemsSource="{Binding Members}" SelectedItem="{Binding SelectedMember}" IsReadOnly="True" AutoGenerateColumns="False">
 			<DataGrid.ContextMenu>
 				<ContextMenu>
 					<MenuItem Header="Добавить участника" Command="{Binding AddNewMemberCommand}"/>
 					<MenuItem Header="Удалить участника" Command="{Binding RemoveMemberCommand}"/>
 				</ContextMenu>
 			</DataGrid.ContextMenu>
-
 			<DataGrid.Columns>
 				<DataGridTextColumn Header="id" Binding="{Binding Id}"/>
 				<DataGridTextColumn Header="Имя" Binding="{Binding Name}"/>
 				<DataGridTextColumn Header="Роль" Binding="{Binding Role.Name}"/>
 				<DataGridTextColumn Header="Дата вступления" Binding="{Binding JoinDate}"/>
-				<DataGridTextColumn Header="Сумма пополнений" Binding="{Binding DepositsAmount, StringFormat=\{0\} руб.}"/>
+				<DataGridTextColumn Header="Сумма пополнений" Binding="{Binding DepositsAmount, StringFormat=\{0\} руб.}" SortDirection="Descending"/>
 				<DataGridTextColumn Header="Доля" Binding="{Binding Share, StringFormat=\{0\}%}"/>
-
 			</DataGrid.Columns>
 		</DataGrid>
 	</Grid>

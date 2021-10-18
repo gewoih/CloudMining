@@ -33,10 +33,10 @@ namespace CloudMining.Views.Windows
 		{
 			string newMemberName = NameTextBox.Text;
 			Role newMemberRole = _Roles.FirstOrDefault(r => r.Name == RolesComboBox.Text);
-			string newMemberJoinDate = JoinDatePicker.Text;
+			DateTime newMemberJoinDate = JoinDatePicker.SelectedDate.Value;
 
 			if (!newMemberName.Equals(String.Empty) && !newMemberRole.Equals(null)
-				&& !newMemberJoinDate.Equals(String.Empty) && DateTime.Parse(newMemberJoinDate) <= DateTime.Now)
+				&& !newMemberJoinDate.Equals(String.Empty) && newMemberJoinDate <= DateTime.Now)
 			{
 				this.NewMember.Name = newMemberName;
 				this.NewMember.Role = newMemberRole;

@@ -39,11 +39,11 @@ namespace CloudMining.Views.Windows
 		{
 			Member newDepositMember = _Members.FirstOrDefault(m => m.Name == MembersComboBox.Text);
 			double newDepositAmount = Convert.ToDouble(AmountTextBox.Text);
-			string newDepositDate = DepositDatePicker.Text;
+			DateTime newDepositDate = DepositDatePicker.SelectedDate.Value;
 			string newDepositComment = CommentTextBox.Text;
 
 			if (!newDepositMember.Equals(null) && !newDepositAmount.Equals(String.Empty)
-				&& DateTime.Parse(newDepositDate) <= DateTime.Now)
+				&& newDepositDate <= DateTime.Now)
 			{
 				this._NewDeposit.Member = newDepositMember;
 				this._NewDeposit.Amount = newDepositAmount;
