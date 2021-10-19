@@ -13,14 +13,21 @@
 	</UserControl.DataContext>
 
 	<Grid>
-		<DataGrid x:Name="dataGrid" ItemsSource="{Binding PayoutShares}" IsReadOnly="True" AutoGenerateColumns="False">
+		<DataGrid x:Name="dataGrid" ItemsSource="{Binding PayoutShares}" SelectedItem="{Binding SelectedPayoutShare}" IsReadOnly="True" AutoGenerateColumns="False">
+			<DataGrid.ContextMenu>
+				<ContextMenu>
+					<MenuItem Header="Завершить выплату" Command="{Binding CompletePayoutShareCommand}"/>
+				</ContextMenu>
+			</DataGrid.ContextMenu>
+			
 			<DataGrid.Columns>
 				<DataGridTextColumn Header="id" Binding="{Binding Id}"/>
 				<DataGridTextColumn Header="Кому" Binding="{Binding Member.Name}"/>
 				<DataGridTextColumn Header="Дата выплаты" Binding="{Binding Payout.Date}" SortDirection="Descending"/>
 				<DataGridTextColumn Header="Монета" Binding="{Binding Payout.Currency.ShortName}"/>
-				<DataGridTextColumn Header="Доля" Binding="{Binding Percent}"/>
+				<DataGridTextColumn Header="Доля" Binding="{Binding Percent, StringFormat=\{0\}%}"/>
 				<DataGridTextColumn Header="Сумма" Binding="{Binding Amount}"/>
+				<DataGridTextColumn Header="Завершена" Binding="{Binding IsDone}"/>
 			</DataGrid.Columns>
 		</DataGrid>
 	</Grid>

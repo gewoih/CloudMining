@@ -1,16 +1,42 @@
 ﻿using CloudMining.Models.Base;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace CloudMining.Models
 {
 	public class PayoutShare : Entity
 	{
-		public Payout Payout { get; set; }
-		public Member Member { get; set; }
-		public double Percent { get; set; }
-		public double Amount { get; set; }
-		public Status Status { get; set; }
+		private Payout _Payout;
+		public Payout Payout
+		{
+			get => _Payout;
+			set => Set(ref _Payout, value);
+		}
+
+		private Member _Member;
+		public Member Member
+		{
+			get => _Member;
+			set => Set(ref _Member, value);
+		}
+
+		private double _Percent;
+		public double Percent
+		{
+			get => _Percent;
+			set => Set(ref _Percent, value);
+		}
+
+		private double _Amount;
+		public double Amount
+		{
+			get => _Amount;
+			set => Set(ref _Amount, value);
+		}
+
+		private bool _IsDone;
+		public bool IsDone
+		{
+			get => _IsDone;
+			set => Set(ref _IsDone, value);
+		}
 	}
 }

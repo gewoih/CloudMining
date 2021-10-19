@@ -1,11 +1,12 @@
 ﻿using CloudMining.DataContext;
+using CloudMining.Infrastructure.Commands;
 using CloudMining.Models;
 using CloudMining.Models.Repositories;
 using CloudMining.Models.Repositories.Base;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
+using System.Linq;
+using System.Windows.Forms;
+using System.Windows.Input;
 
 namespace CloudMining.ViewModels
 {
@@ -17,6 +18,8 @@ namespace CloudMining.ViewModels
 			_PayoutSharesRepository = new PayoutSharesRepository(new BaseDataContext());
 
 			PayoutShares = new ObservableCollection<PayoutShare>(_PayoutSharesRepository.GetAll());
+
+			CompletePayoutShareCommand = new RelayCommand(OnCompletePayoutShareCommandExecuted, CanCompletePayoutShareCommandExecute);
 		}
 		#endregion
 
@@ -28,6 +31,30 @@ namespace CloudMining.ViewModels
 		{
 			get => _PayoutShares;
 			set => Set(ref _PayoutShares, value);
+		}
+
+		private PayoutShare _SelectedPayoutShare;
+		public PayoutShare SelectedPayoutShare
+		{
+			get => _SelectedPayoutShare;
+			set => Set(ref _SelectedPayoutShare, value);
+		}
+		#endregion
+
+		#region Commands
+		public ICommand CompletePayoutShareCommand { get; }
+		private bool CanCompletePayoutShareCommandExecute(object p) => SelectedPayoutShare != null;
+		private void OnCompletePayoutShareCommandExecuted(object p)
+		{
+			DialogResult dialogResult = MessageBox.Show($"Доля [{SelectedPayoutShare.Id}] действительно переведена участнику [{SelectedPayoutShare.Member.Name}]?",
+														"Подтверждение перевода выплаты",
+														MessageBoxButtons.YesNo);
+
+			if (dialogResult == DialogResult.Yes)
+			{
+				this.SelectedPayoutShare.IsDone = true;
+				this._PayoutSharesRepository.Update(SelectedPayoutShare.Id, SelectedPayoutShare);
+			}
 		}
 		#endregion
 	}

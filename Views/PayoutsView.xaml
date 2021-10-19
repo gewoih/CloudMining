@@ -19,6 +19,7 @@
 				<DataGridTextColumn Header="Дата" Binding="{Binding Date}" SortDirection="Descending"/>
 				<DataGridTextColumn Header="Монета" Binding="{Binding Currency.ShortName}"/>
 				<DataGridTextColumn Header="Сумма" Binding="{Binding Amount}"/>
+				<DataGridTextColumn Header="Завершена" Binding="{Binding IsDone}"/>
 			</DataGrid.Columns>
 		</DataGrid>
 	</Grid>

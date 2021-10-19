@@ -1,7 +1,32 @@
-﻿namespace CloudMining.Models.Base
+﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
+
+namespace CloudMining.Models.Base
 {
-	public abstract class Entity
+	public abstract class Entity : INotifyPropertyChanged
 	{
-		public int Id { get; set; }
+		private int _Id;
+		public int Id
+		{
+			get => _Id;
+			set => Set(ref _Id, value);
+		}
+
+		public event PropertyChangedEventHandler PropertyChanged;
+		protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+		{
+			PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+		}
+
+		protected virtual bool Set<T>(ref T field, T value, [CallerMemberName] string propertyName = null)
+		{
+			if (Equals(field, value))
+				return false;
+
+			field = value;
+			OnPropertyChanged(propertyName);
+
+			return true;
+		}
 	}
 }
