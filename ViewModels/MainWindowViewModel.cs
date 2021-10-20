@@ -67,10 +67,6 @@ namespace CloudMining.ViewModels
 					if (MainContentControl is not ElectricityPaymentsViewModel)
 						MainContentControl = new ElectricityPaymentsViewModel();
 					break;
-				case 8:
-					if (MainContentControl is not InvoicesViewModel)
-						MainContentControl = new InvoicesViewModel();
-					break;
 			}
 		}
 		#endregion

@@ -98,16 +98,6 @@
 					<TextBlock Text="Электричество" VerticalAlignment="Center"/>
 				</DockPanel>
 			</ListViewItem>
-			
-			<ListViewItem Foreground="#ACC1EA" HorizontalContentAlignment="Stretch">
-				<ListViewItem.InputBindings>
-					<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="8"/>
-				</ListViewItem.InputBindings>
-				<DockPanel>
-					<Image Source="\Resources/notification.png" Width="50"/>
-					<TextBlock Text="Запросы" VerticalAlignment="Center"/>
-				</DockPanel>
-			</ListViewItem>
 		</ListView>
 
 		<StackPanel Grid.Row="1" Grid.Column="1" Margin="20">

@@ -7,13 +7,19 @@
 			 xmlns:vm="clr-namespace:CloudMining.ViewModels"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-	
+
 	<UserControl.DataContext>
 		<vm:ElectricityPaymentsViewModel/>
 	</UserControl.DataContext>
 
 	<Grid>
-		<DataGrid x:Name="dataGrid" ItemsSource="{Binding ElectricityPayments}" IsReadOnly="True" AutoGenerateColumns="False">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="5"/>
+			<RowDefinition Height="*"/>
+		</Grid.RowDefinitions>
+
+		<DataGrid x:Name="dataGrid" Grid.Row="0" ItemsSource="{Binding ElectricityPayments}" SelectedItem="{Binding SelectedElectricityPayment}" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Stretch">
 			<DataGrid.ContextMenu>
 				<ContextMenu>
 					<MenuItem Header="Добавить платеж по электричеству" Command="{Binding AddElectricityPaymentCommand}"/>
@@ -25,6 +31,24 @@
 				<DataGridTextColumn Header="Дата" Binding="{Binding Date}"/>
 				<DataGridTextColumn Header="Сумма" Binding="{Binding Amount, StringFormat=\{0\}р.}"/>
 				<DataGridTextColumn Header="Собрана" Binding="{Binding IsDone}"/>
+			</DataGrid.Columns>
+		</DataGrid>
+
+		<GridSplitter Grid.Row="1" ShowsPreview="True" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="5" Background="#ACC1EA" DragIncrement="1"/>
+
+		<DataGrid x:Name="dataGrid2" Grid.Row="2" ItemsSource="{Binding ElectricityPaymentShares}" SelectedItem="{Binding SelectedElectricityPaymentShare}" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Stretch">
+			<DataGrid.ContextMenu>
+				<ContextMenu>
+					<MenuItem Header="Завершить платеж" Command="{Binding CompleteElectricityPaymentShareCommand}"/>
+				</ContextMenu>
+			</DataGrid.ContextMenu>
+
+			<DataGrid.Columns>
+				<DataGridTextColumn Header="id" Binding="{Binding Id}"/>
+				<DataGridTextColumn Header="Плательщик" Binding="{Binding Member.Name}"/>
+				<DataGridTextColumn Header="Доля" Binding="{Binding Percent, StringFormat=\{0\}%}"/>
+				<DataGridTextColumn Header="Сумма" Binding="{Binding Amount, StringFormat=\{0\}р.}"/>
+				<DataGridTextColumn Header="Завершена" Binding="{Binding IsDone}"/>
 			</DataGrid.Columns>
 		</DataGrid>
 	</Grid>
