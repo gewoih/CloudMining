@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,8 @@ namespace CloudMining.Views
 		public ElectricityPaymentSharesView()
 		{
 			InitializeComponent();
+
+			this.dataGrid.Items.SortDescriptions.Add(new SortDescription("BaseEntity.Date", ListSortDirection.Descending));
 		}
 	}
 }

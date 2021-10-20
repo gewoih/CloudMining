@@ -13,11 +13,17 @@ namespace CloudMining.Models.Repositories
 	{
 		public ElectricityPaymentsRepository(BaseDataContext dbContext) : base(dbContext) { }
 
+		public override IQueryable<ElectricityPayment> GetAll()
+		{
+			return base.GetAll().Include(p => p.Shares);
+		}
+
 		public override ElectricityPayment Create(ElectricityPayment newPayment)
 		{
-			SplitPayment(newPayment);
+			ElectricityPayment resultPayment = base.Create(newPayment);
+			SplitPayment(resultPayment);
 
-			return base.Create(newPayment);
+			return base.GetById(resultPayment.Id);
 		}
 
 		private void SplitPayment(ElectricityPayment newPayment)
