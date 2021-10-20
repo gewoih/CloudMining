@@ -14,6 +14,8 @@ namespace CloudMining.DataContext
 		public DbSet<Purchase> Purchases { get; set; }
 		public DbSet<Payout> Payouts { get; set; }
 		public DbSet<PayoutShare> PayoutShares { get; set; }
+		public DbSet<ElectricityPayment> ElectricityPayments { get; set; }
+		public DbSet<ElectricityPaymentShare> ElectricityPaymentShares { get; set; }
 
 		public BaseDataContext()
 		{
@@ -59,6 +61,10 @@ namespace CloudMining.DataContext
 			var p3 = new Purchase { Date = DateTime.Now, Amount = 9500, Subject = "Вытяжка для домика" };
 			var p4 = new Purchase { Date = DateTime.Now, Amount = 6200, Subject = "Стеллаж для майнеров" };
 			Purchases.AddRange(p1, p2, p3, p4);
+
+			var e1 = new ElectricityPayment { Date = DateTime.Now, Amount = 22500 };
+			var e2 = new ElectricityPayment { Date = DateTime.Now, Amount = 16000 };
+			ElectricityPayments.AddRange(e1, e2);
 
 			SaveChanges();*/
 		}

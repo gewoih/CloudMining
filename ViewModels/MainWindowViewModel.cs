@@ -64,8 +64,12 @@ namespace CloudMining.ViewModels
 						MainContentControl = new DevicesViewModel();
 					break;
 				case 7:
-					if (MainContentControl is not PayoutSharesViewModel)
-						MainContentControl = new PayoutSharesViewModel();
+					if (MainContentControl is not ElectricityPaymentsViewModel)
+						MainContentControl = new ElectricityPaymentsViewModel();
+					break;
+				case 8:
+					if (MainContentControl is not InvoicesViewModel)
+						MainContentControl = new InvoicesViewModel();
 					break;
 			}
 		}

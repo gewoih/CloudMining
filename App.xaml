@@ -36,6 +36,18 @@
 			<DataTemplate DataType="{x:Type vm:PayoutSharesViewModel}">
 				<view:PayoutSharesView/>
 			</DataTemplate>
+
+			<DataTemplate DataType="{x:Type vm:InvoicesViewModel}">
+				<view:InvoicesView/>
+			</DataTemplate>
+
+			<DataTemplate DataType="{x:Type vm:ElectricityPaymentsViewModel}">
+				<view:ElectricityPaymentsView/>
+			</DataTemplate>
+
+			<DataTemplate DataType="{x:Type vm:ElectricityPaymentSharesViewModel}">
+				<view:ElectricityPaymentSharesView/>
+			</DataTemplate>
 		</ResourceDictionary>
 	</Application.Resources>
 </Application>

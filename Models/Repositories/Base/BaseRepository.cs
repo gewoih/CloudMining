@@ -8,7 +8,7 @@ namespace CloudMining.Models.Repositories.Base
 {
 	public class BaseRepository<T> : IRepository<T> where T : Entity, new()
 	{
-		private readonly BaseDataContext _dbContext;
+		protected readonly BaseDataContext _dbContext;
 
 		public BaseRepository(BaseDataContext dbContext)
 		{
@@ -25,7 +25,7 @@ namespace CloudMining.Models.Repositories.Base
 			return GetAll().FirstOrDefault(item => item.Id == id);
 		}
 
-		public T Create(T entity)
+		public virtual T Create(T entity)
 		{
 			_dbContext.Entry(entity).State = EntityState.Added;
 			_dbContext.SaveChanges();

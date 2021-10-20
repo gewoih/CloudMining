@@ -33,7 +33,6 @@
 				<ListViewItem.InputBindings>
 					<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="1"/>
 				</ListViewItem.InputBindings>
-
 				<DockPanel>
 					<Image Source="\Resources/statistics.png" Width="50"/>
 					<TextBlock Text="Статистика проекта" VerticalAlignment="Center"/>
@@ -95,8 +94,18 @@
 					<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="7"/>
 				</ListViewItem.InputBindings>
 				<DockPanel>
+					<Image Source="\Resources/electricity.png" Width="50"/>
+					<TextBlock Text="Электричество" VerticalAlignment="Center"/>
+				</DockPanel>
+			</ListViewItem>
+			
+			<ListViewItem Foreground="#ACC1EA" HorizontalContentAlignment="Stretch">
+				<ListViewItem.InputBindings>
+					<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="8"/>
+				</ListViewItem.InputBindings>
+				<DockPanel>
 					<Image Source="\Resources/notification.png" Width="50"/>
-					<TextBlock Text="Уведомления" VerticalAlignment="Center"/>
+					<TextBlock Text="Запросы" VerticalAlignment="Center"/>
 				</DockPanel>
 			</ListViewItem>
 		</ListView>

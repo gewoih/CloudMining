@@ -79,7 +79,7 @@ namespace CloudMining.Models.Repositories
 					Member = member,
 					Percent = member.Share,
 					Amount = Math.Round(newPayout.Amount * member.Role.Fee / 100 + (newPayout.Amount - (newPayout.Amount * Members.Sum(m => m.Role.Fee) / 100)) * member.Share / 100, newPayout.Currency.Precision, MidpointRounding.ToZero),
-					Payout = newPayout,
+					BaseEntity = newPayout,
 					IsDone = false
 				});
 			}
