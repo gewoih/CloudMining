@@ -1,6 +1,6 @@
 ﻿using CloudMining.DataContext;
 using CloudMining.Models.Base;
-using CloudMining.Models.Repositories.Base;
+using CloudMining.Repositories;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;

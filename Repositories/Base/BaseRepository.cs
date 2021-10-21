@@ -1,10 +1,9 @@
 ﻿using CloudMining.DataContext;
 using CloudMining.Models.Base;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Linq;
 
-namespace CloudMining.Models.Repositories.Base
+namespace CloudMining.Repositories.Base
 {
 	public class BaseRepository<T> : IRepository<T> where T : Entity, new()
 	{

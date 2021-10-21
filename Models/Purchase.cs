@@ -25,5 +25,12 @@ namespace CloudMining.Models
 			get => _Subject;
 			set => Set(ref _Subject, value);
 		}
+
+		private bool _IsMandatory = false;
+		public bool IsMandatory
+		{
+			get => _IsMandatory;
+			set => Set(ref _IsMandatory, value);
+		}
 	}
 }

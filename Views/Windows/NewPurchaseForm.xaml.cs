@@ -1,18 +1,6 @@
-﻿using CloudMining.DataContext;
-using CloudMining.Models;
-using CloudMining.Models.Repositories.Base;
+﻿using CloudMining.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace CloudMining.Views.Windows
 {
@@ -35,6 +23,7 @@ namespace CloudMining.Views.Windows
 			string newPurchaseSubject = SubjectTextBox.Text;
 			double newPurchaseAmount = Convert.ToDouble(AmountTextBox.Text);
 			DateTime newPurchaseDate = PurchaseDatePicker.SelectedDate.Value;
+			bool isMandatory = IsMandatoryCheckBox.IsChecked.Value;
 
 			if (!newPurchaseSubject.Equals(null) && newPurchaseAmount > 0
 				&& newPurchaseDate <= DateTime.Now)
@@ -42,6 +31,7 @@ namespace CloudMining.Views.Windows
 				this._NewPurchase.Subject = newPurchaseSubject;
 				this._NewPurchase.Amount = newPurchaseAmount;
 				this._NewPurchase.Date = newPurchaseDate;
+				this._NewPurchase.IsMandatory = isMandatory;
 
 				this.DialogResult = true;
 				MessageBox.Show("Покупка добавлена!");

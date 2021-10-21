@@ -1,6 +1,7 @@
 ﻿using CloudMining.DataContext;
 using CloudMining.Models;
-using CloudMining.Models.Repositories.Base;
+using CloudMining.Repositories;
+using CloudMining.Repositories.Base;
 using System.Collections.ObjectModel;
 
 namespace CloudMining.ViewModels

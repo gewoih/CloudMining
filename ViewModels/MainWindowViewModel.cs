@@ -1,4 +1,5 @@
 ﻿using CloudMining.Infrastructure.Commands;
+using CloudMining.Views;
 using System;
 using System.Windows.Input;
 
@@ -14,7 +15,7 @@ namespace CloudMining.ViewModels
 			set => Set(ref _menuIndex, value);
 		}
 
-		private object _mainContentControl = new MembersViewModel();
+		private object _mainContentControl;
 		public object MainContentControl
 		{
 			get => _mainContentControl;
@@ -41,31 +42,32 @@ namespace CloudMining.ViewModels
 			switch (MenuIndex)
 			{
 				case 1:
-					//MainContentControl = new StatisticsViewModel();
+					/*if (MainContentControl is not StatisticsView)
+						MainContentControl = new StatisticsView();*/
 					break;
 				case 2:
-					if (MainContentControl is not MembersViewModel)
-						MainContentControl = new MembersViewModel();
+					if (MainContentControl is not MembersView)
+						MainContentControl = new MembersView();
 					break;
 				case 3:
-					if (MainContentControl is not PayoutsViewModel)
-						MainContentControl = new PayoutsViewModel();
+					if (MainContentControl is not PayoutsView)
+						MainContentControl = new PayoutsView();
 					break;
 				case 4:
-					if (MainContentControl is not DepositsViewModel)
-						MainContentControl = new DepositsViewModel();
+					if (MainContentControl is not DepositsView)
+						MainContentControl = new DepositsView();
 					break;
 				case 5:
-					if (MainContentControl is not PurchasesViewModel)
-						MainContentControl = new PurchasesViewModel();
+					if (MainContentControl is not PurchasesView)
+						MainContentControl = new PurchasesView();
 					break;
 				case 6:
-					if (MainContentControl is not DevicesViewModel)
-						MainContentControl = new DevicesViewModel();
+					if (MainContentControl is not DevicesView)
+						MainContentControl = new DevicesView();
 					break;
 				case 7:
-					if (MainContentControl is not ElectricityPaymentsViewModel)
-						MainContentControl = new ElectricityPaymentsViewModel();
+					if (MainContentControl is not ElectricityPaymentsView)
+						MainContentControl = new ElectricityPaymentsView();
 					break;
 			}
 		}

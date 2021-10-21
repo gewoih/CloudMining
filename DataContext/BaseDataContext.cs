@@ -12,6 +12,7 @@ namespace CloudMining.DataContext
 		public DbSet<Currency> Currencies { get; set; }
 		public DbSet<Role> Roles { get; set; }
 		public DbSet<Purchase> Purchases { get; set; }
+		public DbSet<PurchaseShare> PurchaseShares { get; set; }
 		public DbSet<Payout> Payouts { get; set; }
 		public DbSet<PayoutShare> PayoutShares { get; set; }
 		public DbSet<ElectricityPayment> ElectricityPayments { get; set; }

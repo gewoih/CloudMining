@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:CloudMining.Views.Windows"
         mc:Ignorable="d"
 		Title="Добавление новой покупки" 
-		Height="300" Width="500"
+		Height="400" Width="600"
 		Background="#2F4166"
 		FontSize="20"
 		WindowStartupLocation="CenterScreen">
@@ -22,6 +22,7 @@
 					<RowDefinition/>
 					<RowDefinition/>
 					<RowDefinition/>
+					<RowDefinition/>
 				</Grid.RowDefinitions>
 				<Grid.ColumnDefinitions>
 					<ColumnDefinition/>
@@ -31,10 +32,12 @@
 				<Label Content="Цель покупки:" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#ACC1EA"/>
 				<Label Grid.Row="1" Content="Сумма:" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#ACC1EA"/>
 				<Label Grid.Row="2" Content="Дата:" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#ACC1EA"/>
+				<Label Grid.Row="3" Content="Обязательная:" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="#ACC1EA"/>
 
 				<TextBox x:Name="SubjectTextBox" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="#ACC1EA" Margin="10"/>
 				<TextBox x:Name="AmountTextBox" Grid.Column="1" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Center" Background="#ACC1EA" Margin="10" Cursor="IBeam"/>
 				<DatePicker x:Name="PurchaseDatePicker" Grid.Column="1" Grid.Row="2" Margin="10"/>
+				<CheckBox x:Name="IsMandatoryCheckBox" Grid.Column="1" Grid.Row="3" HorizontalAlignment="Center" Background="#ACC1EA" Margin="10"/>
 			</Grid>
 		</DockPanel>
 

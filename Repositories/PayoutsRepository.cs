@@ -1,17 +1,15 @@
 ﻿using CloudMining.DataContext;
-using CloudMining.Models.Repositories.Base;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Net;
-using System.Diagnostics;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Windows;
+using CloudMining.Repositories.Base;
+using CloudMining.Models;
 
-namespace CloudMining.Models.Repositories
+namespace CloudMining.Repositories
 {
 	public class PayoutsRepository : BaseRepository<Payout>
 	{

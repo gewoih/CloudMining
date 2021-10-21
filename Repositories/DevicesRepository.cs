@@ -1,8 +1,10 @@
 ﻿using CloudMining.DataContext;
+using CloudMining.Models;
+using CloudMining.Repositories.Base;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
-namespace CloudMining.Models.Repositories.Base
+namespace CloudMining.Repositories
 {
 	public class DevicesRepository : BaseRepository<Device>
 	{

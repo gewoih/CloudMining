@@ -12,30 +12,6 @@
 				<ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.Blue.xaml" />
 				<ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Accent/MaterialDesignColor.Purple.xaml" />
 			</ResourceDictionary.MergedDictionaries>
-
-			<DataTemplate DataType="{x:Type vm:MembersViewModel}">
-				<view:MembersView/>
-			</DataTemplate>
-
-			<DataTemplate DataType="{x:Type vm:DevicesViewModel}">
-				<view:DevicesView/>
-			</DataTemplate>
-
-			<DataTemplate DataType="{x:Type vm:DepositsViewModel}">
-				<view:DepositsView/>
-			</DataTemplate>
-
-			<DataTemplate DataType="{x:Type vm:PurchasesViewModel}">
-				<view:PurchasesView/>
-			</DataTemplate>
-
-			<DataTemplate DataType="{x:Type vm:PayoutsViewModel}">
-				<view:PayoutsView/>
-			</DataTemplate>
-
-			<DataTemplate DataType="{x:Type vm:ElectricityPaymentsViewModel}">
-				<view:ElectricityPaymentsView/>
-			</DataTemplate>
 		</ResourceDictionary>
 	</Application.Resources>
 </Application>

@@ -4,8 +4,9 @@ using CloudMining.Views.Windows;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.Windows.Forms;
-using CloudMining.Models.Repositories.Base;
+using CloudMining.Repositories.Base;
 using CloudMining.DataContext;
+using CloudMining.Repositories;
 
 namespace CloudMining.ViewModels
 {

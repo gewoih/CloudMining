@@ -1,6 +1,6 @@
 ﻿using CloudMining.DataContext;
 using CloudMining.Models;
-using CloudMining.Models.Repositories;
+using CloudMining.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;

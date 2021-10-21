@@ -1,7 +1,7 @@
 ﻿using CloudMining.Models.Base;
 using System.Linq;
 
-namespace CloudMining.Models.Repositories.Base
+namespace CloudMining.Repositories.Base
 {
 	public interface IRepository<T> where T: Entity
 	{

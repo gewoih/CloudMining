@@ -1,12 +1,10 @@
 ﻿using CloudMining.DataContext;
 using CloudMining.Infrastructure.Commands;
 using CloudMining.Models;
-using CloudMining.Models.Repositories.Base;
+using CloudMining.Repositories;
+using CloudMining.Repositories.Base;
 using CloudMining.Views.Windows;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Windows.Forms;
 using System.Windows.Input;
 

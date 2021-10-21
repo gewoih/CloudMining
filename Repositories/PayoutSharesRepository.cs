@@ -1,12 +1,10 @@
 ﻿using CloudMining.DataContext;
-using CloudMining.Models.Repositories.Base;
+using CloudMining.Models;
+using CloudMining.Repositories.Base;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
-namespace CloudMining.Models.Repositories
+namespace CloudMining.Repositories
 {
 	public class PayoutSharesRepository : BaseRepository<PayoutShare>
 	{

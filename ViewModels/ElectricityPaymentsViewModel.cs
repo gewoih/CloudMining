@@ -1,8 +1,8 @@
 ﻿using CloudMining.DataContext;
 using CloudMining.Infrastructure.Commands;
 using CloudMining.Models;
-using CloudMining.Models.Repositories;
-using CloudMining.Models.Repositories.Base;
+using CloudMining.Repositories;
+using CloudMining.Repositories.Base;
 using CloudMining.Views.Windows;
 using System.Collections.ObjectModel;
 using System.Linq;
