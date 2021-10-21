@@ -1,5 +1,8 @@
 ﻿using CloudMining.Models.Base;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 
 namespace CloudMining.Models
 {
@@ -32,5 +35,15 @@ namespace CloudMining.Models
 			get => _IsMandatory;
 			set => Set(ref _IsMandatory, value);
 		}
+
+		private List<PurchaseShare> _Shares;
+		public List<PurchaseShare> Shares
+		{
+			get => _Shares;
+			set => Set(ref _Shares, value);
+		}
+
+		[NotMapped]
+		public bool IsDone => Shares.Count(s => s.IsDone == true) == Shares.Count;
 	}
 }

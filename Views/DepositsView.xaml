@@ -24,7 +24,7 @@
 				<DataGridTextColumn Header="id" Binding="{Binding Id}"/>
 				<DataGridTextColumn Header="От кого" Binding="{Binding Member.Name}"/>
 				<DataGridTextColumn Header="Сумма" Binding="{Binding Amount, StringFormat=\{0\}р.}"/>
-				<DataGridTextColumn Header="Дата" Binding="{Binding Date}" SortDirection="Descending"/>
+				<DataGridTextColumn Header="Дата" Binding="{Binding Date, StringFormat=\{0:dd MMM. yyyy\}г., ConverterCulture=ru}" SortDirection="Descending"/>
 				<DataGridTextColumn Header="Комментарий" Binding="{Binding Comment}"/>
 			</DataGrid.Columns>
 		</DataGrid>

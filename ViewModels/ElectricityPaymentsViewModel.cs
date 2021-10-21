@@ -79,7 +79,7 @@ namespace CloudMining.ViewModels
 		}
 
 		public ICommand CompleteElectricityPaymentShareCommand { get; }
-		private bool CanCompleteElectricityPaymentShareCommandExecute(object p) => SelectedElectricityPaymentShare != null;
+		private bool CanCompleteElectricityPaymentShareCommandExecute(object p) => SelectedElectricityPaymentShare != null && SelectedElectricityPaymentShare.IsDone == false;
 		private void OnCompleteElectricityPaymentShareCommandExecuted(object p)
 		{
 			DialogResult dialogResult = MessageBox.Show($"Участник [{SelectedElectricityPaymentShare.Member.Name}] действительно перевел [{SelectedElectricityPaymentShare.Amount}р.] за электричество?",

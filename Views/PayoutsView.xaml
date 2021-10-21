@@ -33,7 +33,7 @@
 
 			<DataGrid.Columns>
 				<DataGridTextColumn Header="id" Binding="{Binding Id}"/>
-				<DataGridTextColumn Header="Дата" Binding="{Binding Date}" SortDirection="Descending"/>
+				<DataGridTextColumn Header="Дата" Binding="{Binding Date, StringFormat=\{0:dd MMM. yyyyг. в HH:mm\}, ConverterCulture=ru}" SortDirection="Descending"/>
 				<DataGridTextColumn Header="Монета" Binding="{Binding Currency.ShortName}"/>
 				<DataGridTextColumn Header="Сумма" Binding="{Binding Amount}"/>
 			</DataGrid.Columns>

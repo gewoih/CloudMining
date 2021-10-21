@@ -1,6 +1,7 @@
 ﻿using CloudMining.DataContext;
 using CloudMining.Models;
 using CloudMining.Repositories.Base;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,11 @@ namespace CloudMining.Repositories
 	public class PurchasesRepository : BaseRepository<Purchase>
 	{
 		public PurchasesRepository(BaseDataContext dbContext) : base(dbContext) { }
+
+		public override IQueryable<Purchase> GetAll()
+		{
+			return base.GetAll().Include(p => p.Shares);
+		}
 
 		public override Purchase Create(Purchase newPurchase)
 		{

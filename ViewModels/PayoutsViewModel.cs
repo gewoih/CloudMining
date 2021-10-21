@@ -63,7 +63,7 @@ namespace CloudMining.ViewModels
 
 		#region Commands
 		public ICommand CompletePayoutShareCommand { get; }
-		private bool CanCompletePayoutShareCommandExecute(object p) => SelectedPayoutShare != null;
+		private bool CanCompletePayoutShareCommandExecute(object p) => SelectedPayoutShare != null && SelectedPayoutShare.IsDone == false;
 		private void OnCompletePayoutShareCommandExecuted(object p)
 		{
 			DialogResult dialogResult = MessageBox.Show($"Доля [{SelectedPayoutShare.Id}] действительно переведена участнику [{SelectedPayoutShare.Member.Name}]?",

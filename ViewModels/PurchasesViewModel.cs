@@ -99,7 +99,7 @@ namespace CloudMining.ViewModels
 		}
 
 		public ICommand CompletePurchaseShareCommand { get; }
-		private bool CanCompletePurchaseShareCommandExecute(object p) => SelectedPurchaseShare != null;
+		private bool CanCompletePurchaseShareCommandExecute(object p) => SelectedPurchaseShare != null && SelectedPurchaseShare.IsDone == false;
 		private void OnCompletePurchaseShareCommandExecuted(object p)
 		{
 			DialogResult dialogResult = MessageBox.Show($"Участник [{SelectedPurchaseShare.Member.Name}] действительно перевел [{SelectedPurchaseShare.Amount}р.] для покупки [{SelectedPurchaseShare.BaseEntity.Subject}]?",
