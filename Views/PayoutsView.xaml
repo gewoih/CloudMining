@@ -20,18 +20,39 @@
 		</Grid.RowDefinitions>
 		
 		<DataGrid x:Name="dataGrid" ItemsSource="{Binding Payouts}" SelectedItem="{Binding SelectedPayout}" IsReadOnly="True" AutoGenerateColumns="False">
+			<DataGrid.ItemContainerStyle>
+				<Style TargetType="DataGridRow">
+					<Setter Property="Background" Value="#FDB2B2"/>
+					<Style.Triggers>
+						<DataTrigger Binding="{Binding IsDone}" Value="True">
+							<Setter Property="Background" Value="#AAF2AA"/>
+						</DataTrigger>
+					</Style.Triggers>
+				</Style>
+			</DataGrid.ItemContainerStyle>
+
 			<DataGrid.Columns>
 				<DataGridTextColumn Header="id" Binding="{Binding Id}"/>
 				<DataGridTextColumn Header="Дата" Binding="{Binding Date}" SortDirection="Descending"/>
 				<DataGridTextColumn Header="Монета" Binding="{Binding Currency.ShortName}"/>
 				<DataGridTextColumn Header="Сумма" Binding="{Binding Amount}"/>
-				<DataGridTextColumn Header="Завершена" Binding="{Binding IsDone}"/>
 			</DataGrid.Columns>
 		</DataGrid>
 
 		<GridSplitter Grid.Row="1" ShowsPreview="True" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="5" Background="#ACC1EA" DragIncrement="1"/>
 
 		<DataGrid x:Name="dataGrid2" Grid.Row="2" ItemsSource="{Binding PayoutShares}" SelectedItem="{Binding SelectedPayoutShare}" IsReadOnly="True" AutoGenerateColumns="False">
+			<DataGrid.ItemContainerStyle>
+				<Style TargetType="DataGridRow">
+					<Setter Property="Background" Value="#FDB2B2"/>
+					<Style.Triggers>
+						<DataTrigger Binding="{Binding IsDone}" Value="True">
+							<Setter Property="Background" Value="#AAF2AA"/>
+						</DataTrigger>
+					</Style.Triggers>
+				</Style>
+			</DataGrid.ItemContainerStyle>
+			
 			<DataGrid.ContextMenu>
 				<ContextMenu>
 					<MenuItem Header="Завершить выплату" Command="{Binding CompletePayoutShareCommand}"/>
@@ -43,7 +64,6 @@
 				<DataGridTextColumn Header="Кому" Binding="{Binding Member.Name}"/>
 				<DataGridTextColumn Header="Доля" Binding="{Binding Percent, StringFormat=\{0\}%}"/>
 				<DataGridTextColumn Header="Сумма" Binding="{Binding Amount}"/>
-				<DataGridTextColumn Header="Завершена" Binding="{Binding IsDone}"/>
 			</DataGrid.Columns>
 		</DataGrid>
 	</Grid>

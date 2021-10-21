@@ -20,6 +20,17 @@
 		</Grid.RowDefinitions>
 
 		<DataGrid x:Name="dataGrid" Grid.Row="0" ItemsSource="{Binding ElectricityPayments}" SelectedItem="{Binding SelectedElectricityPayment}" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Stretch">
+			<DataGrid.ItemContainerStyle>
+				<Style TargetType="DataGridRow">
+					<Setter Property="Background" Value="#FDB2B2"/>
+					<Style.Triggers>
+						<DataTrigger Binding="{Binding IsDone}" Value="True">
+							<Setter Property="Background" Value="#AAF2AA"/>
+						</DataTrigger>
+					</Style.Triggers>
+				</Style>
+			</DataGrid.ItemContainerStyle>
+			
 			<DataGrid.ContextMenu>
 				<ContextMenu>
 					<MenuItem Header="Добавить платеж по электричеству" Command="{Binding AddElectricityPaymentCommand}"/>
@@ -30,13 +41,23 @@
 				<DataGridTextColumn Header="id" Binding="{Binding Id}"/>
 				<DataGridTextColumn Header="Дата" Binding="{Binding Date}"/>
 				<DataGridTextColumn Header="Сумма" Binding="{Binding Amount, StringFormat=\{0\}р.}"/>
-				<DataGridTextColumn Header="Собрана" Binding="{Binding IsDone}"/>
 			</DataGrid.Columns>
 		</DataGrid>
 
 		<GridSplitter Grid.Row="1" ShowsPreview="True" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="5" Background="#ACC1EA" DragIncrement="1"/>
 
 		<DataGrid x:Name="dataGrid2" Grid.Row="2" ItemsSource="{Binding ElectricityPaymentShares}" SelectedItem="{Binding SelectedElectricityPaymentShare}" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Stretch">
+			<DataGrid.ItemContainerStyle>
+				<Style TargetType="DataGridRow">
+					<Setter Property="Background" Value="#FDB2B2"/>
+					<Style.Triggers>
+						<DataTrigger Binding="{Binding IsDone}" Value="True">
+							<Setter Property="Background" Value="#AAF2AA"/>
+						</DataTrigger>
+					</Style.Triggers>
+				</Style>
+			</DataGrid.ItemContainerStyle>
+			
 			<DataGrid.ContextMenu>
 				<ContextMenu>
 					<MenuItem Header="Завершить платеж" Command="{Binding CompleteElectricityPaymentShareCommand}"/>
@@ -48,7 +69,6 @@
 				<DataGridTextColumn Header="Плательщик" Binding="{Binding Member.Name}"/>
 				<DataGridTextColumn Header="Доля" Binding="{Binding Percent, StringFormat=\{0\}%}"/>
 				<DataGridTextColumn Header="Сумма" Binding="{Binding Amount, StringFormat=\{0\}р.}"/>
-				<DataGridTextColumn Header="Завершена" Binding="{Binding IsDone}"/>
 			</DataGrid.Columns>
 		</DataGrid>
 	</Grid>

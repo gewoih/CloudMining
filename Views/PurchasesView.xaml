@@ -20,6 +20,17 @@
 		</Grid.RowDefinitions>
 		
 		<DataGrid ItemsSource="{Binding Purchases}" SelectedItem="{Binding SelectedPurchase}" IsReadOnly="True" AutoGenerateColumns="False">
+			<DataGrid.ItemContainerStyle>
+				<Style TargetType="DataGridRow">
+					<Setter Property="Background" Value="#FDB2B2"/>
+					<Style.Triggers>
+						<DataTrigger Binding="{Binding IsDone}" Value="True">
+							<Setter Property="Background" Value="#AAF2AA"/>
+						</DataTrigger>
+					</Style.Triggers>
+				</Style>
+			</DataGrid.ItemContainerStyle>
+			
 			<DataGrid.ContextMenu>
 				<ContextMenu>
 					<MenuItem Header="Добавить покупку" Command="{Binding AddPurchaseCommand}"/>
@@ -38,6 +49,17 @@
 		<GridSplitter Grid.Row="1" ShowsPreview="True" HorizontalAlignment="Stretch" VerticalAlignment="Center" Height="5" Background="#ACC1EA" DragIncrement="1"/>
 
 		<DataGrid x:Name="dataGrid2" Grid.Row="2" ItemsSource="{Binding PurchaseShares}" SelectedItem="{Binding SelectedPurchaseShare}" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Stretch">
+			<DataGrid.ItemContainerStyle>
+				<Style TargetType="DataGridRow">
+					<Setter Property="Background" Value="#FDB2B2"/>
+					<Style.Triggers>
+						<DataTrigger Binding="{Binding IsDone}" Value="True">
+							<Setter Property="Background" Value="#AAF2AA"/>
+						</DataTrigger>
+					</Style.Triggers>
+				</Style>
+			</DataGrid.ItemContainerStyle>
+			
 			<DataGrid.ContextMenu>
 				<ContextMenu>
 					<MenuItem Header="Завершить платеж" Command="{Binding CompletePurchaseShareCommand}"/>
@@ -49,7 +71,6 @@
 				<DataGridTextColumn Header="Плательщик" Binding="{Binding Member.Name}"/>
 				<DataGridTextColumn Header="Доля" Binding="{Binding Percent, StringFormat=\{0\}%}"/>
 				<DataGridTextColumn Header="Сумма" Binding="{Binding Amount, StringFormat=\{0\}р.}"/>
-				<DataGridTextColumn Header="Завершена" Binding="{Binding IsDone}"/>
 			</DataGrid.Columns>
 		</DataGrid>
 	</Grid>
