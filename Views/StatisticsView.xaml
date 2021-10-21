@@ -31,7 +31,6 @@
 					<RowDefinition/>
 					<RowDefinition/>
 					<RowDefinition/>
-					<RowDefinition/>
 				</Grid.RowDefinitions>
 
 				<StackPanel Grid.Row="0" HorizontalAlignment="Center" Margin="10">
@@ -53,7 +52,7 @@
 				<StackPanel Grid.Row="4" HorizontalAlignment="Center" Margin="10">
 					<Grid>
 						<ProgressBar Minimum="0" Maximum="100" Value="{Binding TotalProfitPercentage, Mode=OneWay}" Width="500" Height="40"/>
-						<TextBlock Text="{Binding TotalProfitPercentage, Mode=OneWay}" FontSize="30" FontWeight="Bold" Foreground="#031C4E" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+						<TextBlock Text="{Binding TotalProfitPercentage, Mode=OneWay, StringFormat=Окупилось \{0\}%}" FontSize="30" FontWeight="Bold" Foreground="#031C4E" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 					</Grid>
 				</StackPanel>
 			</Grid>

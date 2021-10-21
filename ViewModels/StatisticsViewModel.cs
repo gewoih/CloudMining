@@ -1,11 +1,15 @@
 ﻿using CloudMining.DataContext;
+using CloudMining.Models;
 using CloudMining.Repositories;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Text.Json.Serialization;
+using System.Windows;
 
 namespace CloudMining.ViewModels
 {
@@ -14,10 +18,10 @@ namespace CloudMining.ViewModels
 		#region Constructor
 		public StatisticsViewModel()
 		{
-			this.TotalIncome = BTCRUB;
-			this.TotalElectricity = new ElectricityPaymentSharesRepository(new BaseDataContext()).GetAll().Where(p => p.IsDone == true).Sum(p => p.Amount);
-			this.TotalExpenses = new PurchaseSharesRepository(new BaseDataContext()).GetAll().Where(p => p.IsDone == true).Sum(p => p.Amount) + TotalElectricity;
-			this.TotalProfit = TotalIncome - TotalExpenses;
+			this.TotalIncome = this.CalculateTotalIncome(new CurrenciesRepository(new BaseDataContext()).GetAll().ToList(), new PayoutsRepository(new BaseDataContext()).GetAll().ToList());
+			this.TotalElectricity = new ElectricityPaymentsRepository(new BaseDataContext()).GetAll().Sum(p => p.Amount);
+			this.TotalExpenses = new DepositsRepository(new BaseDataContext()).GetAll().Sum(p => p.Amount);
+			this.TotalProfit = TotalIncome - TotalExpenses - TotalElectricity;
 		}
 		#endregion
 
@@ -50,7 +54,7 @@ namespace CloudMining.ViewModels
 			set => Set(ref _TotalProfit, value);
 		}
 
-		public double TotalProfitPercentage => TotalProfit / TotalExpenses;
+		public double TotalProfitPercentage => Math.Abs(Math.Round(TotalIncome / (TotalExpenses + TotalElectricity) * 100, 2));
 
 		public double BTCRUB
 		{
@@ -62,8 +66,25 @@ namespace CloudMining.ViewModels
 				var json = webClient.DownloadString(webClient.BaseAddress);
 				dynamic obj = JsonConvert.DeserializeObject(json);
 
-				return Convert.ToDouble(obj.price);
+				return obj["price"];
 			}
+		}
+
+		private double CalculateTotalIncome(List<Currency> currencies, List<Payout> payouts)
+		{
+			double income = 0;
+			WebClient webClient = new WebClient();
+			webClient.BaseAddress = $"https://api.binance.com/api/v3/ticker/price";
+
+			var json = webClient.DownloadString(webClient.BaseAddress);
+			List<dynamic> obj = JsonConvert.DeserializeObject<List<object>>(json);
+			foreach (var currency in currencies)
+			{
+				dynamic curr = obj.Find(o => o["symbol"] == $"{currency.ShortName}RUB");
+				income += (double)curr["price"] * payouts.Where(p => p.Currency.Id == currency.Id).Sum(p => p.Amount);
+			}
+
+			return Math.Round(income, 0);
 		}
 		#endregion
 	}

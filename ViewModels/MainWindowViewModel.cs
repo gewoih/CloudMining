@@ -15,7 +15,7 @@ namespace CloudMining.ViewModels
 			set => Set(ref _menuIndex, value);
 		}
 
-		private object _mainContentControl = new StatisticsView();
+		private object _mainContentControl;
 		public object MainContentControl
 		{
 			get => _mainContentControl;

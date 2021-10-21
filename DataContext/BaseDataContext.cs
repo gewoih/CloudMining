@@ -63,9 +63,8 @@ namespace CloudMining.DataContext
 			var p4 = new Purchase { Date = DateTime.Now, Amount = 6200, Subject = "Стеллаж для майнеров" };
 			Purchases.AddRange(p1, p2, p3, p4);
 
-			var e1 = new ElectricityPayment { Date = DateTime.Now, Amount = 22500 };
-			var e2 = new ElectricityPayment { Date = DateTime.Now, Amount = 16000 };
-			ElectricityPayments.AddRange(e1, e2);
+			var e1 = new ElectricityPayment { Date = DateTime.Now, Amount = 57668 };
+			ElectricityPayments.AddRange(e1);
 
 			SaveChanges();*/
 		}
