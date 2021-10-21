@@ -35,6 +35,7 @@ namespace CloudMining.Models.Base
 			get => _Amount;
 			set => Set(ref _Amount, value);
 		}
+
 		private bool _IsDone;
 		public bool IsDone
 		{

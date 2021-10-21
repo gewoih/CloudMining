@@ -15,7 +15,7 @@ namespace CloudMining.ViewModels
 			set => Set(ref _menuIndex, value);
 		}
 
-		private object _mainContentControl;
+		private object _mainContentControl = new StatisticsView();
 		public object MainContentControl
 		{
 			get => _mainContentControl;
@@ -42,8 +42,8 @@ namespace CloudMining.ViewModels
 			switch (MenuIndex)
 			{
 				case 1:
-					/*if (MainContentControl is not StatisticsView)
-						MainContentControl = new StatisticsView();*/
+					if (MainContentControl is not StatisticsView)
+						MainContentControl = new StatisticsView();
 					break;
 				case 2:
 					if (MainContentControl is not MembersView)
