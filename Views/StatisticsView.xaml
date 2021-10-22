@@ -31,25 +31,28 @@
 					<RowDefinition/>
 					<RowDefinition/>
 					<RowDefinition/>
+					<RowDefinition/>
 				</Grid.RowDefinitions>
 
-				<StackPanel Grid.Row="0" HorizontalAlignment="Center" Margin="10">
+				<ComboBox Grid.Row="0" HorizontalAlignment="Center" MinWidth="300" Width="Auto" Margin="10" ItemsSource="{Binding Members}" DisplayMemberPath="Name"  SelectedItem="{Binding SelectedMember}" FontSize="24"/>
+
+				<StackPanel Grid.Row="1" HorizontalAlignment="Center" Margin="10">
 					<TextBlock Text="{Binding TotalIncome, StringFormat=Общий доход: \{0\}р.}" FontSize="24" FontWeight="Bold" Foreground="#ACC1EA" HorizontalAlignment="Center"/>
 				</StackPanel>
 				
-				<StackPanel Grid.Row="1" HorizontalAlignment="Center" Margin="10">
-					<TextBlock Text="{Binding TotalExpenses, StringFormat=Суммарные затраты: \{0\}р.}" FontSize="24" FontWeight="Bold" Foreground="#ACC1EA" HorizontalAlignment="Center"/>
-				</StackPanel>
-
 				<StackPanel Grid.Row="2" HorizontalAlignment="Center" Margin="10">
-					<TextBlock Text="{Binding TotalElectricity, StringFormat=Оплачено электричества на: \{0\}р.}" FontSize="24" FontWeight="Bold" Foreground="#ACC1EA" HorizontalAlignment="Center"/>
+					<TextBlock Text="{Binding TotalExpenses, StringFormat=Сумма покупок: \{0\}р.}" FontSize="24" FontWeight="Bold" Foreground="#ACC1EA" HorizontalAlignment="Center"/>
 				</StackPanel>
 
 				<StackPanel Grid.Row="3" HorizontalAlignment="Center" Margin="10">
-					<TextBlock Text="{Binding TotalProfit, StringFormat=Чистая прибыль проекта: \{0\}р.}" FontSize="24" FontWeight="Bold" Foreground="#ACC1EA" HorizontalAlignment="Center"/>
+					<TextBlock Text="{Binding TotalElectricity, StringFormat=Электричества на: \{0\}р.}" FontSize="24" FontWeight="Bold" Foreground="#ACC1EA" HorizontalAlignment="Center"/>
 				</StackPanel>
 
 				<StackPanel Grid.Row="4" HorizontalAlignment="Center" Margin="10">
+					<TextBlock Text="{Binding TotalProfit, StringFormat=Чистая прибыль: \{0\}р.}" FontSize="24" FontWeight="Bold" Foreground="#ACC1EA" HorizontalAlignment="Center"/>
+				</StackPanel>
+
+				<StackPanel Grid.Row="5" HorizontalAlignment="Center" Margin="10">
 					<Grid>
 						<ProgressBar Minimum="0" Maximum="100" Value="{Binding TotalProfitPercentage, Mode=OneWay}" Width="500" Height="40"/>
 						<TextBlock Text="{Binding TotalProfitPercentage, Mode=OneWay, StringFormat=Окупилось \{0\}%}" FontSize="30" FontWeight="Bold" Foreground="#031C4E" HorizontalAlignment="Center" VerticalAlignment="Center"/>

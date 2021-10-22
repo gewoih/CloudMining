@@ -13,7 +13,6 @@ namespace CloudMining.Views
 			InitializeComponent();
 
 			this.dataGrid.Items.SortDescriptions.Add(new SortDescription("Date", ListSortDirection.Descending));
-
 		}
 	}
 }

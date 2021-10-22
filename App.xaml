@@ -1,8 +1,6 @@
 ﻿<Application x:Class="CloudMining.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-			 xmlns:vm="clr-namespace:CloudMining.ViewModels"
-			 xmlns:view="clr-namespace:CloudMining.Views"
              StartupUri="Views/Windows/MainWindow.xaml">
     <Application.Resources>
 		<ResourceDictionary>

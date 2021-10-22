@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
@@ -18,14 +19,30 @@ namespace CloudMining.ViewModels
 		#region Constructor
 		public StatisticsViewModel()
 		{
-			this.TotalIncome = this.CalculateTotalIncome(new CurrenciesRepository(new BaseDataContext()).GetAll().ToList(), new PayoutsRepository(new BaseDataContext()).GetAll().ToList());
-			this.TotalElectricity = new ElectricityPaymentsRepository(new BaseDataContext()).GetAll().Sum(p => p.Amount);
-			this.TotalExpenses = new DepositsRepository(new BaseDataContext()).GetAll().Sum(p => p.Amount);
-			this.TotalProfit = TotalIncome - TotalExpenses - TotalElectricity;
+			this.Members = new ObservableCollection<Member>(new MembersRepository(new BaseDataContext()).GetAll().ToList());
+			CalculateStatistics();
 		}
 		#endregion
 
 		#region Properties
+		private ObservableCollection<Member> _Members;
+		public ObservableCollection<Member> Members
+		{
+			get => _Members;
+			set => Set(ref _Members, value);
+		}
+
+		private Member _SelectedMember;
+		public Member SelectedMember
+		{
+			get => _SelectedMember;
+			set
+			{
+				Set(ref _SelectedMember, value);
+				CalculateStatistics();
+			}
+		}
+
 		private double _TotalIncome;
 		public double TotalIncome
 		{
@@ -54,25 +71,40 @@ namespace CloudMining.ViewModels
 			set => Set(ref _TotalProfit, value);
 		}
 
-		public double TotalProfitPercentage => Math.Abs(Math.Round(TotalIncome / (TotalExpenses + TotalElectricity) * 100, 2));
-
-		public double BTCRUB
+		private double _TotalProfitPercentage;
+		public double TotalProfitPercentage
 		{
-			get
+			get => _TotalProfitPercentage;
+			set => Set(ref _TotalProfitPercentage, value);
+		}
+		#endregion
+
+		#region Methods
+		private void CalculateStatistics()
+		{
+			if (SelectedMember == null)
 			{
-				WebClient webClient = new WebClient();
-				webClient.BaseAddress = $"https://api.binance.com/api/v3/ticker/price?symbol=BTCRUB";
-
-				var json = webClient.DownloadString(webClient.BaseAddress);
-				dynamic obj = JsonConvert.DeserializeObject(json);
-
-				return obj["price"];
+				this.TotalIncome = this.CalculateTotalIncome();
+				this.TotalElectricity = new ElectricityPaymentSharesRepository(new BaseDataContext()).GetAll().Sum(p => p.Amount);
+				this.TotalExpenses = new DepositsRepository(new BaseDataContext()).GetAll().Sum(p => p.Amount);
 			}
+			else
+			{
+				this.TotalIncome = this.CalculateTotalIncome(SelectedMember);
+				this.TotalElectricity = new ElectricityPaymentSharesRepository(new BaseDataContext()).GetAll().Where(p => p.Member.Id == SelectedMember.Id).Sum(p => p.Amount);
+				this.TotalExpenses = new DepositsRepository(new BaseDataContext()).GetAll().Where(d => d.Member.Id == SelectedMember.Id) .Sum(p => p.Amount);
+			}
+
+			this.TotalProfit = TotalIncome - TotalExpenses - TotalElectricity;
+			this.TotalProfitPercentage = Math.Abs(Math.Round(TotalIncome / (TotalExpenses + TotalElectricity) * 100, 2));
 		}
 
-		private double CalculateTotalIncome(List<Currency> currencies, List<Payout> payouts)
+		private double CalculateTotalIncome(Member member = null)
 		{
 			double income = 0;
+			List<Currency> currencies = new List<Currency>(new CurrenciesRepository(new BaseDataContext()).GetAll());
+			List<PayoutShare> payoutShares = new List<PayoutShare>(new PayoutSharesRepository(new BaseDataContext()).GetAll());
+
 			WebClient webClient = new WebClient();
 			webClient.BaseAddress = $"https://api.binance.com/api/v3/ticker/price";
 
@@ -81,7 +113,10 @@ namespace CloudMining.ViewModels
 			foreach (var currency in currencies)
 			{
 				dynamic curr = obj.Find(o => o["symbol"] == $"{currency.ShortName}RUB");
-				income += (double)curr["price"] * payouts.Where(p => p.Currency.Id == currency.Id).Sum(p => p.Amount);
+				if (member == null)
+					income += (double)curr["price"] * payoutShares.Where(p => p.BaseEntity.Currency.Id == currency.Id).Sum(p => p.Amount);
+				else
+					income += (double)curr["price"] * payoutShares.Where(p => p.BaseEntity.Currency.Id == currency.Id).Where(p => p.Member.Id == member.Id) .Sum(p => p.Amount);
 			}
 
 			return Math.Round(income, 0);
