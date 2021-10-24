@@ -19,7 +19,7 @@
 			<RowDefinition/>
 		</Grid.RowDefinitions>
 		
-		<DataGrid ItemsSource="{Binding Purchases}" SelectedItem="{Binding SelectedPurchase}" IsReadOnly="True" AutoGenerateColumns="False">
+		<DataGrid x:Name="dataGrid" ItemsSource="{Binding Purchases}" SelectedItem="{Binding SelectedPurchase}" IsReadOnly="True" AutoGenerateColumns="False">
 			<DataGrid.ItemContainerStyle>
 				<Style TargetType="DataGridRow">
 					<Setter Property="Background" Value="#FDB2B2"/>
