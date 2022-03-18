@@ -8,7 +8,6 @@ namespace CloudMining.DataContext
 	{
 		public DbSet<Member> Members { get; set; }
 		public DbSet<Deposit> Deposits { get; set; }
-		public DbSet<Device> Devices { get; set; }
 		public DbSet<Currency> Currencies { get; set; }
 		public DbSet<Role> Roles { get; set; }
 		public DbSet<Purchase> Purchases { get; set; }

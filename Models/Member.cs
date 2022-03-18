@@ -10,26 +10,9 @@ namespace CloudMining.Models
 {
 	public class Member : NamedEntity
 	{
-		private Role _Role;
-		public Role Role
-		{
-			get => _Role;
-			set => Set(ref _Role, value);
-		}
-
-		private DateTime _JoinDate;
-		public DateTime JoinDate
-		{
-			get => _JoinDate;
-			set => Set(ref _JoinDate, value);
-		}
-
-		private List<Deposit> _Deposits;
-		public List<Deposit> Deposits
-		{
-			get => _Deposits;
-			set => Set(ref _Deposits, value);
-		}
+		public Role Role { get; set; }
+		public DateTime JoinDate { get; set; }
+		public List<Deposit> Deposits { get; set; }
 
 		[NotMapped]
 		public double DepositsAmount => Deposits.Sum(d => d.Amount);

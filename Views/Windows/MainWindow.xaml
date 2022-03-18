@@ -69,29 +69,19 @@
 				</DockPanel>
 			</ListViewItem>
 
-			<ListViewItem Foreground="#ACC1EA">
-				<ListViewItem.InputBindings>
-					<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="5"/>
-				</ListViewItem.InputBindings>
-				<DockPanel>
-					<Image Source="\Resources/expense.png" Width="50"/>
-					<TextBlock Text="Покупки" VerticalAlignment="Center"/>
-				</DockPanel>
-			</ListViewItem>
+            <ListViewItem Foreground="#ACC1EA">
+                <ListViewItem.InputBindings>
+                    <MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="5"/>
+                </ListViewItem.InputBindings>
+                <DockPanel>
+                    <Image Source="\Resources/expense.png" Width="50"/>
+                    <TextBlock Text="Покупки" VerticalAlignment="Center"/>
+                </DockPanel>
+            </ListViewItem>
 
-			<ListViewItem Foreground="#ACC1EA">
+            <ListViewItem Foreground="#ACC1EA" HorizontalContentAlignment="Stretch">
 				<ListViewItem.InputBindings>
 					<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="6"/>
-				</ListViewItem.InputBindings>
-				<DockPanel>
-					<Image Source="\Resources/device.png" Width="50"/>
-					<TextBlock Text="Оборудование" VerticalAlignment="Center"/>
-				</DockPanel>
-			</ListViewItem>
-
-			<ListViewItem Foreground="#ACC1EA" HorizontalContentAlignment="Stretch">
-				<ListViewItem.InputBindings>
-					<MouseBinding MouseAction="LeftClick" Command="{Binding ChangeMenuIndexCommand}" CommandParameter="7"/>
 				</ListViewItem.InputBindings>
 				<DockPanel>
 					<Image Source="\Resources/electricity.png" Width="50"/>

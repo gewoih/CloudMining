@@ -42,31 +42,21 @@ namespace CloudMining.ViewModels
 			switch (MenuIndex)
 			{
 				case 1:
-					if (MainContentControl is not StatisticsView)
 						MainContentControl = new StatisticsView();
 					break;
 				case 2:
-					if (MainContentControl is not MembersView)
 						MainContentControl = new MembersView();
 					break;
 				case 3:
-					if (MainContentControl is not PayoutsView)
 						MainContentControl = new PayoutsView();
 					break;
 				case 4:
-					if (MainContentControl is not DepositsView)
 						MainContentControl = new DepositsView();
 					break;
 				case 5:
-					if (MainContentControl is not PurchasesView)
 						MainContentControl = new PurchasesView();
 					break;
 				case 6:
-					if (MainContentControl is not DevicesView)
-						MainContentControl = new DevicesView();
-					break;
-				case 7:
-					if (MainContentControl is not ElectricityPaymentsView)
 						MainContentControl = new ElectricityPaymentsView();
 					break;
 			}

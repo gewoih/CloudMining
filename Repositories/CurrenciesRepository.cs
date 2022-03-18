@@ -10,7 +10,7 @@ namespace CloudMining.Repositories
 	{
 		public override IQueryable<Currency> GetAll()
 		{
-			return base.GetAll().Include(item => item.Devices);
+			return base.GetAll();
 		}
 
 		public CurrenciesRepository(BaseDataContext dbContext) : base(dbContext) { }
