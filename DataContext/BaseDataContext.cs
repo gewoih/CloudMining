@@ -1,6 +1,7 @@
 ﻿using CloudMining.Models;
 using Microsoft.EntityFrameworkCore;
 using System;
+using System.Configuration;
 
 namespace CloudMining.DataContext
 {
@@ -39,8 +40,8 @@ namespace CloudMining.DataContext
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
 			optionsBuilder.UseMySql(
-							"server=server71.hosting.reg.ru;port=3306;user=u1507549_default;password=8fCFB6jH9x4D4ovv;database=u1507549_cloudminingdb;",
-							new MySqlServerVersion(new Version(5, 7, 27)));      
+				ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString,
+				new MySqlServerVersion(new Version(5, 7, 27)));      
 		}
 	}
 }

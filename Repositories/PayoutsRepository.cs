@@ -8,17 +8,14 @@ using Newtonsoft.Json.Linq;
 using System.Windows;
 using CloudMining.Repositories.Base;
 using CloudMining.Models;
+using System.Configuration;
 
 namespace CloudMining.Repositories
 {
 	public class PayoutsRepository : BaseRepository<Payout>
 	{
-		private string ApiKey { get; set; }
-
 		public PayoutsRepository(BaseDataContext dbContext) : base(dbContext)
 		{
-			this.ApiKey = "b5791b71-80f1-4347-8d6e-4c177bdf5dd9";
-
 			ApiDataSync();
 		}
 
@@ -55,7 +52,7 @@ namespace CloudMining.Repositories
 		private List<ApiPayout> GetApiPayouts(Currency currency)
 		{
 			WebClient webClient = new WebClient();
-			webClient.BaseAddress = $"https://api.emcd.io/v1/{currency.ShortName}/payouts/{ApiKey}";
+			webClient.BaseAddress = $"https://api.emcd.io/v1/{currency.ShortName}/payouts/{ConfigurationManager.AppSettings["EmcdApi"]}";
 
 			string response = webClient.DownloadString(webClient.BaseAddress);
 			JObject json = JObject.Parse(response);
