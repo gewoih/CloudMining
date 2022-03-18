@@ -1,6 +1,7 @@
 ﻿using CloudMining.DataContext;
 using CloudMining.Models.Base;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace CloudMining.Repositories.Base
@@ -30,6 +31,14 @@ namespace CloudMining.Repositories.Base
 			_dbContext.SaveChanges();
 
 			return GetById(entity.Id);
+		}
+
+		public virtual IEnumerable<T> Create(IEnumerable<T> entities)
+		{
+			this._dbContext.Set<T>().AddRange(entities);
+			this._dbContext.SaveChanges();
+
+			return entities;
 		}
 
 		public void Update(int id, T entity)

@@ -7,6 +7,7 @@ using System.Windows.Forms;
 using CloudMining.Repositories.Base;
 using CloudMining.DataContext;
 using CloudMining.Repositories;
+using System.Collections.Generic;
 
 namespace CloudMining.ViewModels
 {
